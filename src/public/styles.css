@@ -1,0 +1,15 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  color: #222222;
+}
+
+input::-moz-focus-inner {
+  border: 0;
+}
+
+a {
+  outline: 0;
+  text-decoration: none;
+}

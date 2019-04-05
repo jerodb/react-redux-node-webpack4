@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+  head
+    meta(http-equiv='content-type' content='text/html; charset=utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no')
+    meta(name='theme-color' content='#000000')
+    meta(name="description", content="")
+    meta(name="keywords", content="")
+
+    link(
+      rel="shortcut icon" 
+      type="image/x-icon" 
+      href="https://coralreefpalau.org/wp-content/uploads/2017/03/CRRF-mark.png"
+    )
+    link(
+      href="//fonts.googleapis.com/css?family=Poppins:400,500,600,700&amp;subset=latin,latin-ext" 
+      rel="stylesheet" 
+      type="text/css"
+    )
+
+    //-
+      script.
+        window.onloadCallback = function() {
+          try {
+            window.grecaptcha && window.grecaptcha.render('reCaptchaContainer', {})
+          }
+          catch(e) {}
+        }
+      script(src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer)
+    
+
+    title Playnews
+    //script history.pushState(null, "", location.href.split("?")[0])
+  body
+    block content
+  
