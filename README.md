@@ -1,6 +1,6 @@
-# coralreefpalau
+# React Redux Webpack4 Node Skeleton
 
-- Create .env file with the following variables, complete with the environment values after the equals:
+- Create .env file with the following variables:
 
 ```
   ENV=
@@ -12,10 +12,6 @@
   MYSQL_PASS=
   MYSQL_HOST=
   MYSQL_PORT=
-  MYSQL_USERS=
-  MYSQL_PAYMENTS=
-  MYSQL_USER_GAMES=
-  RECAPTCHA_KEY=
 ```
 
 - Create .my.cnf in the user home dir or in mysql config dir if possible. Add the following, complete with mysql user and pass:
@@ -45,11 +41,13 @@ $ yarn
 - Build:
 
 ```
+$ yarn build:dev
 $ yarn build
 ```
 
 - Start server:
 
 ```
+$ yarn dev
 $ yarn start
 ```
