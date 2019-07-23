@@ -1,4 +1,4 @@
-# React Node Webpack4 Mysql Skeleton
+# React-Node-Webpack4-Mysql App Skeleton
 
 - Using [pug](https://pugjs.org/) as template engine. 
 
