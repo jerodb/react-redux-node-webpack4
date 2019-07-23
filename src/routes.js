@@ -1,4 +1,5 @@
 import Home from './screens/Home'
+import Callback from './screens/Callback'
 
 const routes = [
   {
@@ -7,6 +8,12 @@ const routes = [
     Comp: Home,
     exact: true,
   },
+  {
+    key: 'callback',
+    path: '/auth/callback',
+    Comp: Callback,
+    exact: true,
+  }
 ]
 
 export default routes

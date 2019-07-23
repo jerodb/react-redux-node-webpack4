@@ -1,0 +1,12 @@
+// - var host = htmlWebpackPlugin.options.host
+
+script(src=`${host}/lib/iframeResizer.min.js` type='text/javascript')
+  script.
+    function loadIframe() {
+      var element = document.getElementById('iFrame0');
+      if (document.body.contains(element)) {
+          window.iFrameResize({
+            log: true,
+          }, '#iFrame0')
+      }
+    }

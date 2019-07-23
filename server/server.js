@@ -5,6 +5,8 @@ import http from 'http'
 import CONFIG from '../config'
 import app from './app'
 
+process.env.IMAGES = CONFIG.IMAGES
+
 const env = CONFIG.ENV
 const port = normalizePort(CONFIG.PORT)
 const server = new http.Server(app)

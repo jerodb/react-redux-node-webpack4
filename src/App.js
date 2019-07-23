@@ -1,16 +1,19 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
 import Router from './components/Router'
-import Footer from './components/Footer'
-import Header from './components/Header'
+import Auth from './lib/Auth'
 
-import './public/styles.css'
+import './res/styles.css'
+
+let auth = null
 
 const App = () => (
-  <>
-    <Header />
-    <Router />
-    <Footer />
-  </>
+  <Route render={({ history, location }) => {
+    auth = auth === null ? new Auth({ history }) : auth
+
+    return <Router location={location} auth={auth} />
+  }}
+  />
 )
 
 export default App

@@ -25,7 +25,14 @@ const Router = () => (
     <Switch>
       {routes.map(({
         key, path, exact = false, Comp,
-      }) => <Route key={key} exact={exact} path={path} component={Comp} />)}
+      }) => (
+        <Route
+          key={key}
+          exact={exact}
+          path={path}
+          component={Comp}
+        />
+      ))}
       )
     </Switch>
   </div>

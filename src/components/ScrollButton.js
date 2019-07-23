@@ -97,8 +97,8 @@ const styles = () => ({
   },
   arrowUp: {
     background: `transparent url('${
-      process.env.PUBLIC_URL
-    }/public/img/arrow-top.png') no-repeat right top`,
+      process.env.BASE_URL
+    }/images/arrow-top.png') no-repeat right top`,
     backgroundSize: 'cover',
     width: 20,
     height: 23,

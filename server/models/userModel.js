@@ -1,19 +1,35 @@
 import Sequelize from 'sequelize'
 import { sequelize } from '../services/mysql'
-import { MYSQL_USERS as table } from '../../config'
 
 const userModel = sequelize.define(
-  table,
+  'users',
   {
     id: {
-      type: Sequelize.INTEGER,
-      autoIncrement: true,
+      type: Sequelize.STRING.BINARY,
       allowNull: false,
       primaryKey: true,
     },
-    name: Sequelize.STRING,
+    idStr: {
+      field: 'id_str',
+      type: Sequelize.STRING(36),
+      allowNull: false
+    },
+    authId: {
+      field: 'auth_id',
+      type: Sequelize.STRING(100),
+      allowNull: false
+    },
+    createdAt: {
+      field: 'created_at',
+      type: Sequelize.DATE,
+    },
+    updatedAt: {
+      field: 'updated_at',
+      type: Sequelize.DATE,
+    }
   },
   {
+    timestamp: false,
     underscored: true,
   },
 )

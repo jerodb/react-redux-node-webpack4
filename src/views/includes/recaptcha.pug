@@ -1,0 +1,8 @@
+script.
+  window.onloadCallback = function() {
+    try {
+      window.grecaptcha && window.grecaptcha.render('reCaptchaContainer', {})
+    }
+    catch(e) {}
+  }
+script(src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer)

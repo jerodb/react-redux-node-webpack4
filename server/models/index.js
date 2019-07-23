@@ -1,2 +1,2 @@
-module.exports.User = require('./userModel')
+module.exports.Users = require('./userModel')
 module.exports.UserGames = require('./userGamesModel')

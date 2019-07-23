@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import path from 'path'
-// import { verifyConnection } from './services/mysql'
+import { verifyConnection } from './services/mysql'
 import routes from './routes'
 
 // Init express app
@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, '..', 'dist')))
 // ==============================================================================
 // VIEW CONFIGURATION
 // ==============================================================================
-app.set('views', path.join(__dirname, '..', 'dist', 'views'))
+app.set('views', path.join(__dirname, '..', 'dist'))
 app.set('view engine', 'pug')
 
 // ==============================================================================
@@ -58,7 +58,7 @@ app.use((err, req, res, next) => {
     msg = `${err.message} (${status})`
     info = err.stack
   }
-
+  console.log('err: ', err)
   res.status(status)
   res.render('error', { msg, info })
   next()

@@ -12,5 +12,5 @@ window.onload = () => {
     document.getElementById('app'),
   )
 
-  module.hot.accept()
+  if (process.env.NODE_ENV === 'development') module.hot.accept()
 }
