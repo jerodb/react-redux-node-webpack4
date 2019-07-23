@@ -1,5 +1,7 @@
 # React Node Webpack4 Mysql Skeleton
 
+- Using [pug](https://pugjs.org/) as template engine. 
+
 - Create .env file with the following variables:
 
 ```
