@@ -2,7 +2,8 @@
 /* eslint-disable react/no-multi-comp */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/styles'
+import { arrowTop } from '../res/images'
 
 class ScrollButton extends Component {
   constructor() {
@@ -96,9 +97,7 @@ const styles = () => ({
     },
   },
   arrowUp: {
-    background: `transparent url('${
-      process.env.BASE_URL
-    }/images/arrow-top.png') no-repeat right top`,
+    background: `transparent url('${arrowTop}') no-repeat right top`,
     backgroundSize: 'cover',
     width: 20,
     height: 23,
