@@ -28,7 +28,7 @@ export default (env, args) => {
     output: {
       path: buildPath,
       publicPath: `${BASE_URL}`,
-      filename: 'bundle.js'
+      filename: path.join('js', 'bundle.js')
     },
     devServer: isDev ? {
       port: 3000,
@@ -37,25 +37,28 @@ export default (env, args) => {
     } : {},
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
-      // Creates global constants which can be configured at compile time.
+
+      // Creates global constants which are configured at compile time.
       new webpack.DefinePlugin({
         'process.env': {
           BASE_URL: JSON.stringify(BASE_URL),
           IMAGES_URL: JSON.stringify(IMAGES_URL),
-          NODE_ENV: JSON.stringify('production'),
-          RECAPTCHA_KEY: JSON.stringify(RECAPTCHA_KEY),
+          NODE_ENV: JSON.stringify('production')
         }
       }),
+
       /*
-    new webpack.ProvidePlugin({
-      Promise: 'es6-promise',
-      fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
-    }),
-    */
-      // Generate an external css file with a hash in the filename
-      new MiniCssExtractPlugin({
-        filename: 'styles.css'
+      new webpack.ProvidePlugin({
+        Promise: 'es6-promise',
+        fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
       }),
+      */
+
+      // Generate an external css file
+      new MiniCssExtractPlugin({
+        filename: path.join('css', 'styless.css')
+      }),
+
       /*
       * Generate a .pug or .html file that includes
       * all webpack bundles in the body using script tags and styles using link tags.
@@ -65,34 +68,23 @@ export default (env, args) => {
         hash: !isDev,
         template: path.join(sourcePath, 'views', 'index.pug'),
         templateParameters: {
+          host: HOST,
+          imagesUrl: IMAGES_URL,
           includeAuth: false,
-          host: HOST
+          includeRecaptcha: !!RECAPTCHA_KEY,
         }
       }),
-      isDev
-        ? () => ({})
-        : new HtmlWebpackPlugin({
-          template: path.join(sourcePath, 'views', 'layout.pug'),
-          filename: 'layout.pug',
-          hash: true,
-          templateParameters: {
-            baseUrl: BASE_URL,
-            host: HOST,
-            imagesUrl: IMAGES_URL,
-            includeRecaptcha: !!RECAPTCHA_KEY,
-          }
-        // minify (true if mode prod and false if mode dev)
-        }),
 
       new HtmlWebpackPugPlugin(),
 
-      // new HtmlWebpackPugPlugin(),
-      // Moves all the require/import "[fileName].css" in entry chunks
+      // ExtractTextPlugin: moves all the require/import "[fileName].css" in entry chunks
       // into a separate single CSS file.
       new ExtractTextPlugin({
-        filename: 'styles.[hash:8].css',
+        filename: path.join('css', 'styles.css'),
         allChunks: true
       }),
+
+      // CopyWebpackPlugin: copy files or dirs from one location to another.
       new CopyWebpackPlugin([
         {
           from: path.join(sourcePath, 'assets'),
@@ -104,7 +96,7 @@ export default (env, args) => {
         },
         {
           from: path.join(__dirname, 'node_modules', 'auth0-js', 'build', 'auth0.js'),
-          to: path.join(buildPath, 'auth0.js')
+          to: path.join(buildPath, 'js', 'auth0.js')
         },
       ])
     ],
