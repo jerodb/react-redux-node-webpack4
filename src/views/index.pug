@@ -1,7 +1,17 @@
-extends layout
+doctype html
+html(lang='en')
+  head
+    include includes/commonMetasLinks
 
-block content
-  #app !{ markup }
+    title Title Me
+    
+    if includeRecaptcha
+      include includes/recaptcha
 
-  if includeAuth
-    include includes/auth
+    // material-UI styles are inserted here when SSR
+    style(id='jss-server-side') !{ styles }
+  body
+    #app !{ markup }
+
+    if includeAuth
+      include includes/auth
