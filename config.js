@@ -1,8 +1,8 @@
-require('dotenv').config()
-
-//= ==========================================
+// ************************
 // CONFIG INITIALIZATION
-//= ==========================================
+// ************************
+
+require('dotenv').config()
 
 const CONFIG = {
   BASE_URL: process.env.BASE_URL || '/',

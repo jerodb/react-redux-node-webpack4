@@ -58,7 +58,9 @@ app.use((err, req, res, next) => {
     msg = `${err.message} (${status})`
     info = err.stack
   }
+
   console.log('err: ', err)
+
   res.status(status)
   res.render('error', { msg, info })
   next()
