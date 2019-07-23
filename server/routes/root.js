@@ -16,6 +16,7 @@ export default (req, res) => {
   // Create a new class name generator.
   const generateClassName = createGenerateClassName()
 
+  // Create Material UI theme
   const theme = createMuiTheme({
     palette: {
       type: 'light',
