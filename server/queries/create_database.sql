@@ -1,1 +1,1 @@
-CREATE DATABASE playnews;
+CREATE DATABASE your_database;
