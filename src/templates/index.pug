@@ -1,3 +1,6 @@
+- var includeRecaptcha = htmlWebpackPlugin.options.includeRecaptcha
+- var includeAuth = htmlWebpackPlugin.options.includeAuth
+
 doctype html
 html(lang='en')
   head
@@ -9,9 +12,9 @@ html(lang='en')
       include includes/recaptcha
 
     // material-UI styles are inserted here when SSR
-    style(id='jss-server-side') !{ styles }
+    styles(id='jss-server-side')
   body
-    #app !{ markup }
+    #app
 
     if includeAuth
       include includes/auth
