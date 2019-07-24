@@ -4,18 +4,37 @@
 
 require('dotenv').config()
 
-const CONFIG = {
-  BASE_URL: process.env.BASE_URL || '/',
-  ENV: process.env.NODE_ENV || 'development',
-  HOST: process.env.HOST || '',
-  IMAGES: `${process.env.HOST}${process.env.BASE_URL}images/`,
-  MYSQL_DB: process.env.MYSQL_DB,
-  MYSQL_USER: process.env.MYSQL_USER,
-  MYSQL_PASS: process.env.MYSQL_PASS,
-  MYSQL_HOST: process.env.MYSQL_HOST,
-  MYSQL_PORT: process.env.MYSQL_PORT,
-  PORT: process.env.PORT || '3000',
-  RECAPTCHA_KEY: process.env.RECAPTCHA_KEY || ''
+const {
+  BASE_URL, HOST, NODE_ENV, PORT, RECAPTCHA_KEY,
+  AUTH_CLIENT_ID, AUTH_DOMAIN, AUTH_RESPONSE_TYPE, AUTH_REDIRECT_URI, AUTH_SCOPE,
+  MYSQL_DB, MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_PORT
+} = process.env
+
+let CONFIG = {
+  BASE_URL: BASE_URL || '/',
+  ENV: NODE_ENV || 'development',
+  HOST: HOST || '',
+  IMAGES_URL: `${HOST}${BASE_URL}images/`,
+  PORT: PORT || '3000',
+  RECAPTCHA_KEY
+}
+
+CONFIG = {
+  ...CONFIG,
+  AUTH_CLIENT_ID,
+  AUTH_DOMAIN,
+  AUTH_RESPONSE_TYPE,
+  AUTH_REDIRECT_URI,
+  AUTH_SCOPE,
+}
+
+CONFIG = {
+  ...CONFIG,
+  MYSQL_DB,
+  MYSQL_USER,
+  MYSQL_PASS,
+  MYSQL_HOST,
+  MYSQL_PORT,
 }
 
 module.exports = CONFIG
