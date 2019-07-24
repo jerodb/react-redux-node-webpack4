@@ -1,6 +1,8 @@
 # React-Node-Webpack4 App Skeleton
 
-- Using [pug](https://pugjs.org/) for templates.
+- SSR.
+- MaterialUI (Material UI styles included when SSR)
+- [pug](https://pugjs.org/) for templates.
 - Ready to use **Mysql** database api. (optional)
 
 ## Getting started
