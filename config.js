@@ -10,7 +10,7 @@ const {
   MYSQL_DB, MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_PORT
 } = process.env
 
-const CONFIG = {
+const config = {
   BASE_URL: BASE_URL || '/',
   ENV: NODE_ENV || 'development',
   HOST: HOST || '',
@@ -31,4 +31,4 @@ const CONFIG = {
   MYSQL_PORT,
 }
 
-module.exports = CONFIG
+module.exports = config
