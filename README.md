@@ -2,7 +2,7 @@
 
 - Using [pug](https://pugjs.org/) for templates.
 
-# Getting started
+## Getting started
 
 - Create .env file with the following variables:
 
