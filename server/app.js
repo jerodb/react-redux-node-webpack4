@@ -54,7 +54,7 @@ app.use('/', routes)
 // ==============================================================================
 app.use((err, req, res, next) => {
   let msg = 'An error has occured'
-  let info = 'If the error persists please contact us.'
+  let info = 'If the error persists you are welcome to debug :)'
   const status = err.status || 500
 
   if (app.get('env') === 'production') {
