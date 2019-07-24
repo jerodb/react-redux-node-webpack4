@@ -6,7 +6,7 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import { createGenerateClassName } from '@material-ui/styles'
 import fs from 'fs'
 import path from 'path'
-import App from '../../src/App'
+import App from '../../src/components/App'
 
 export default (req, res) => {
   // Create a sheetsRegistry instance.
