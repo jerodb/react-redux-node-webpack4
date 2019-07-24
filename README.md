@@ -1,7 +1,7 @@
 # React-Node-Webpack4 App Skeleton
 
 - Using [pug](https://pugjs.org/) for templates.
-- Optional Mysql database ready to use api.
+- Ready to use **Mysql** database api. (optional)
 
 ## Getting started
 
