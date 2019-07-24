@@ -6,6 +6,7 @@ import morgan from 'morgan'
 import path from 'path'
 import { verifyConnection } from './services/mysql'
 import routes from './routes'
+import { MYSQL_DB } from '../config'
 
 // Init express app
 const app = express()
@@ -47,7 +48,7 @@ app.use('/', routes)
 // ==============================================================================
 // VERIFY DATABASE CONNECTION
 // ==============================================================================
-// verifyConnection()
+if (MYSQL_DB) verifyConnection()
 
 // ==============================================================================
 // ERRORS HANDLER
