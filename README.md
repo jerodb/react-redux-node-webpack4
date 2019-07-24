@@ -7,10 +7,10 @@
 - Create .env file with the following variables:
 
 ```
-  BASE_URL=/
-  HOST=http://localhost:3000
-  NODE_ENV=development
-  PORT=3000
+  BASE_URL=
+  HOST=
+  NODE_ENV=
+  PORT=
 ```
 
 ## Install, build and run:
