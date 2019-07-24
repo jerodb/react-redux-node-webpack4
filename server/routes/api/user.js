@@ -28,11 +28,13 @@ const setUser = (req, res) => {
       defaults
     }).then(result => {
       console.log('results: ', result)
-      return res.json(true)
+
+      res.json(true)
     })
   } catch (err) {
     console.log('ERROR - Users.findOrCreate:', err)
-    return res.json(false)
+
+    res.json(false)
   }
 }
 

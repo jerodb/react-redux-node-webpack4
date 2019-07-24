@@ -1,8 +1,8 @@
 import express from 'express'
-import { users } from './controllers'
+import user from './user'
 
 const router = express.Router()
 
-router.post('/users/set', users.setUser)
+router.post('/set/user', user.setUser)
 
 module.exports = router

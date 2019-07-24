@@ -1,6 +1,6 @@
 import express from 'express'
-import root from './root'
 import api from './api'
+import root from './root'
 
 const router = express.Router()
 
