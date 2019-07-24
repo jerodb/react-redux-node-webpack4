@@ -6,11 +6,17 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import {
-  BASE_URL, HOST, IMAGES_URL, RECAPTCHA_KEY
+  AUTH_CLIENT_ID, BASE_URL, IMAGES_URL, RECAPTCHA_KEY
 } from './config'
 
 const buildPath = path.join(__dirname, 'dist')
 const sourcePath = path.join(__dirname, 'src')
+
+const templateParameters = {
+  imagesUrl: IMAGES_URL,
+  includeAuth: !!AUTH_CLIENT_ID,
+  includeRecaptcha: !!RECAPTCHA_KEY,
+}
 
 export default (env, args) => {
   const isDev = args.mode === 'development'
@@ -25,6 +31,7 @@ export default (env, args) => {
     devtool: 'source-map',
     entry: path.join(sourcePath, 'index'),
     target: 'web',
+    node: { fs: 'empty' },
     output: {
       path: buildPath,
       publicPath: `${BASE_URL}`,
@@ -38,14 +45,14 @@ export default (env, args) => {
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
 
-      // Creates global constants which are configured at compile time.
+      // webpack.DefinePlugin: Creates global constants which are configured at compile time.
+      /*
       new webpack.DefinePlugin({
         'process.env': {
-          BASE_URL: JSON.stringify(BASE_URL),
-          IMAGES_URL: JSON.stringify(IMAGES_URL),
           NODE_ENV: JSON.stringify('production')
         }
       }),
+      */
 
       /*
       new webpack.ProvidePlugin({
@@ -54,28 +61,23 @@ export default (env, args) => {
       }),
       */
 
-      // Generate an external css file
-      new MiniCssExtractPlugin({
-        filename: path.join('css', 'styless.css')
-      }),
-
       /*
-      * Generate a .pug or .html file that includes
+      * Generate a .html file that includes
       * all webpack bundles in the body using script tags and styles using link tags.
       */
       new HtmlWebpackPlugin({
-        filename: isDev ? 'index.html' : 'index.pug',
+        filename: 'index.html',
         hash: !isDev,
-        template: path.join(sourcePath, 'views', 'index.pug'),
-        templateParameters: {
-          host: HOST,
-          imagesUrl: IMAGES_URL,
-          includeAuth: false,
-          includeRecaptcha: !!RECAPTCHA_KEY,
-        }
+        template: path.join(sourcePath, 'templates', 'index.pug'),
+        ...templateParameters
       }),
 
       new HtmlWebpackPugPlugin(),
+
+      // Generate an external css file
+      new MiniCssExtractPlugin({
+        filename: path.join('css', 'styles.css')
+      }),
 
       // ExtractTextPlugin: moves all the require/import "[fileName].css" in entry chunks
       // into a separate single CSS file.
@@ -91,10 +93,6 @@ export default (env, args) => {
           to: path.join(buildPath)
         },
         {
-          from: path.join(sourcePath, 'views', 'includes'),
-          to: path.join(buildPath, 'includes')
-        },
-        {
           from: path.join(__dirname, 'node_modules', 'auth0-js', 'build', 'auth0.js'),
           to: path.join(buildPath, 'js', 'auth0.js')
         },
@@ -102,13 +100,10 @@ export default (env, args) => {
     ],
     module: {
       rules: [
-        (isDev
-          ? {
-            test: /\.pug/,
-            use: ['pug-loader']
-          }
-          : {}
-        ),
+        {
+          test: /\.pug/,
+          use: ['pug-loader']
+        },
         {
           test: /\.(jsx|js)?$/,
           exclude: /node_modules/,
