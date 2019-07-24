@@ -2,7 +2,7 @@ import '@babel/polyfill'
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { hydrate } from 'react-dom'
-import App from './App'
+import App from './components/App'
 import { BASE_URL, NODE_ENV } from '../config'
 
 window.onload = () => {
