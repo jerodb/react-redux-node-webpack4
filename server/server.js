@@ -2,14 +2,13 @@
 import '@babel/polyfill'
 import http from 'http'
 // import fs from 'fs'
-import CONFIG from '../config'
+import { ENV, PORT } from '../config'
 import app from './app'
 
-process.env.IMAGES = CONFIG.IMAGES
-
-const env = CONFIG.ENV
-const port = normalizePort(CONFIG.PORT)
+const env = ENV
+const port = normalizePort(PORT)
 const server = new http.Server(app)
+
 /*
 const certificate = fs.readFileSync('chained.pem')
 const privateKey = fs.readFileSync('domain.key')
@@ -21,6 +20,7 @@ const opt = {
 
 const server = https.createServer(opt, app)
 */
+
 server.on('error', onError)
 server.on('listening', onListening)
 server.listen(port)

@@ -1,5 +1,8 @@
 import auth0 from 'auth0-js'
 import { users } from '../services'
+import {
+  AUTH_CLIENT_ID, AUTH_DOMAIN, AUTH_RESPONSE_TYPE, AUTH_REDIRECT_URI, AUTH_SCOPE
+} from '../../config'
 
 export default class Auth {
   accessToken;
@@ -15,11 +18,11 @@ export default class Auth {
   picture;
 
   auth0 = new auth0.WebAuth({
-    domain: 'playnews.auth0.com',
-    clientID: 'ehvWV6IvuPlANICzvSOR6f2mZTt2h1rd',
-    redirectUri: `${process.env.HOST}/auth/callback`,
-    responseType: 'token id_token',
-    scope: 'openid profile email'
+    domain: AUTH_DOMAIN,
+    clientID: AUTH_CLIENT_ID,
+    redirectUri: AUTH_REDIRECT_URI,
+    responseType: AUTH_RESPONSE_TYPE,
+    scope: AUTH_SCOPE
   })
 
   constructor(args) {
