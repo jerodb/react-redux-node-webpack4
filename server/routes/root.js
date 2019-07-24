@@ -4,6 +4,8 @@ import { StaticRouter } from 'react-router-dom'
 import { JssProvider, SheetsRegistry } from 'react-jss'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import { createGenerateClassName } from '@material-ui/styles'
+import fs from 'fs'
+import path from 'path'
 import App from '../../src/App'
 
 export default (req, res) => {
@@ -37,6 +39,21 @@ export default (req, res) => {
   // Grab the CSS from our sheetsRegistry.
   const styles = sheetsRegistry.toString()
 
-  // render the index template with the rendered React markup and styles.
-  return res.render('index', { markup, styles })
+  const template = path.join(__dirname, '..', '..', 'dist', 'index.html')
+
+  // Loads template
+  fs.readFile(template, 'utf8', (err, data) => {
+    if (err) throw err
+
+    // Inserts the rendered React HTML and styles.
+    const document = data
+      .replace('<div id="app"></div>', `<div id="app">${markup}</div>`)
+      .replace('<styles id="jss-server-side"></styles>', `<styles id="jss-server-side">${styles}</styles>`)
+
+    // Sends html with the rendered React markup and styles.
+    return res.send(document)
+  })
+
+  // render the index template with the rendered React HTML and styles.
+  // return res.render('index', { markup, styles })
 }
