@@ -1,6 +1,7 @@
-# React-Node-Webpack4-Mysql App Skeleton
+# React-Node-Webpack4 App Skeleton
 
 - Using [pug](https://pugjs.org/) for templates.
+- Optional Mysql database ready to use api.
 
 ## Getting started
 
