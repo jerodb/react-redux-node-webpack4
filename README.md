@@ -6,6 +6,7 @@
 - Ready to use **[Mysql](https://dev.mysql.com/doc/refman/8.0/en/)** database api. **(optional)**
   
 <br />
+  
 ## Getting started
 
 - Create .env file with the following variables:
@@ -28,6 +29,7 @@ If you omit the .env file the app will start with this default:
 ```
   
 <br />
+  
 ## Install, build and run:
 
 - Install dependencies:
@@ -56,6 +58,7 @@ $ yarn dev
 ```
   
 <br />
+  
 ## Include Mysql
 
 - Add to .env file:
