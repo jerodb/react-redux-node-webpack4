@@ -36,19 +36,25 @@ If you omit the .env file the app will start with this default:
 $ yarn
 ```
 
-- Build:
+- Build (webpack mode depends on NODE_ENV value set on .env):
 
 ```
-$ yarn build:dev
 $ yarn build
 ```
 
 - Start server:
 
 ```
-$ yarn dev
-$ yarn start
+$ yarn start:dev
+$ yarn start:prod
 ```
+
+- Start dev-server with HR:
+
+```
+$ yarn dev
+```
+
 
 ## Include Mysql
 
