@@ -13,20 +13,22 @@ import {
 const buildPath = path.join(__dirname, 'dist')
 const sourcePath = path.join(__dirname, 'src')
 
+const mode = NODE_ENV
+
 const templateParameters = {
   imagesUrl: IMAGES_URL,
   includeAuth: !!AUTH_CLIENT_ID,
   includeRecaptcha: !!RECAPTCHA_KEY,
 }
 
-export default (env, args) => {
-  const isDev = args.mode === 'development'
+export default () => {
+  const isDev = mode === 'development'
 
   return ({
     resolve: {
       extensions: ['*', '.js', '.jsx', '.json']
     },
-    mode: args.mode,
+    mode,
     devtool: isDev ? 'eval-source-map' : 'source-map',
     entry: path.join(sourcePath, 'index'),
     target: 'web',
@@ -52,6 +54,7 @@ export default (env, args) => {
           HOST: JSON.stringify(HOST),
           IMAGES_URL: JSON.stringify(IMAGES_URL),
           PORT: JSON.stringify(PORT),
+
           RECAPTCHA_KEY: JSON.stringify(RECAPTCHA_KEY),
 
           AUTH_CLIENT_ID: JSON.stringify(AUTH_CLIENT_ID),

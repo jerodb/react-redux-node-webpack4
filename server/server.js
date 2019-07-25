@@ -2,10 +2,10 @@
 import '@babel/polyfill'
 import http from 'http'
 // import fs from 'fs'
-import { ENV, PORT } from '../config'
+import { NODE_ENV, PORT } from '../config'
 import app from './app'
 
-const env = ENV
+const env = NODE_ENV
 const port = normalizePort(PORT)
 const server = new http.Server(app)
 
