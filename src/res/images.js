@@ -3,8 +3,7 @@
 // *******************
 // All image resources that will be used in the app must be set here.
 
-import { IMAGES_URL } from '../../config'
-
+const { IMAGES_URL } = process.env
 const url = IMAGES_URL
 
 export const loading = `${url}loading.svg`

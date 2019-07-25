@@ -1,8 +1,9 @@
 import auth0 from 'auth0-js'
 import { users } from '../services'
-import {
+
+const {
   AUTH_CLIENT_ID, AUTH_DOMAIN, AUTH_RESPONSE_TYPE, AUTH_REDIRECT_URI, AUTH_SCOPE
-} from '../../config'
+} = process.env
 
 export default class Auth {
   accessToken;
