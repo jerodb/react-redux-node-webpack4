@@ -4,8 +4,8 @@
 - **[MaterialUI](https://material-ui.com/getting-started/usage/)** integrated. (Material UI styles included when SSR)
 - Using **[pug](https://pugjs.org/api/getting-started.html)** for templates.
 - Ready to use **[Mysql](https://dev.mysql.com/doc/refman/8.0/en/)** database api. **(optional)**
-
-
+  
+  
 ## Getting started
 
 - Create .env file with the following variables:
@@ -26,8 +26,8 @@ If you omit the .env file the app will start with this default:
   NODE_ENV=development
   PORT=3000
 ```
-
-
+  
+  
 ## Install, build and run:
 
 - Install dependencies:
@@ -54,8 +54,8 @@ $ yarn start:prod
 ```
 $ yarn dev
 ```
-
-
+  
+  
 ## Include Mysql
 
 - Add to .env file:
@@ -79,5 +79,5 @@ MYSQL_PORT=
   user =
   password =
 ```
-
+  
 **IMPORTANT:** MYSQL_USER and MYSQL_PASS values in .env file must be the same as user and password in .my.cnf file.
