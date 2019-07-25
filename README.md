@@ -1,9 +1,10 @@
 # React-Node-Webpack4 App Skeleton
 
-- SSR.
+- SSR ready.
 - MaterialUI (Material UI styles included when SSR)
-- [pug](https://pugjs.org/) for templates.
+- Using [pug](https://pugjs.org/) for templates.
 - Ready to use **Mysql** database api. (optional)
+
 
 ## Getting started
 
@@ -15,6 +16,17 @@
   NODE_ENV=
   PORT=
 ```
+
+If you omit the .env file the app will start with this default:
+
+
+```
+  BASE_URL=/
+  HOST=http://localhost:3000
+  NODE_ENV=development
+  PORT=3000
+```
+
 
 ## Install, build and run:
 
