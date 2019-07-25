@@ -5,6 +5,7 @@
 - Using **[pug](https://pugjs.org/api/getting-started.html)** for templates.
 - Ready to use **[Mysql](https://dev.mysql.com/doc/refman/8.0/en/)** database api. **(optional)**
   
+
   
 ## Getting started
 
@@ -27,6 +28,7 @@ If you omit the .env file the app will start with this default:
   PORT=3000
 ```
   
+
   
 ## Install, build and run:
 
@@ -54,6 +56,7 @@ $ yarn start:prod
 ```
 $ yarn dev
 ```
+  
   
   
 ## Include Mysql
