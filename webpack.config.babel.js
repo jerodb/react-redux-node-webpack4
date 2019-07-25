@@ -1,12 +1,13 @@
+// NOTE: webpack v4+ will minify your code by default in production mode.
 import CopyWebpackPlugin from 'copy-webpack-plugin'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import {
-  AUTH_CLIENT_ID, BASE_URL, IMAGES_URL, RECAPTCHA_KEY
+  BASE_URL, HOST, IMAGES_URL, NODE_ENV, PORT, RECAPTCHA_KEY,
+  AUTH_CLIENT_ID, AUTH_DOMAIN, AUTH_RESPONSE_TYPE, AUTH_REDIRECT_URI, AUTH_SCOPE,
+  MYSQL_DB, MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_PORT
 } from './config'
 
 const buildPath = path.join(__dirname, 'dist')
@@ -26,9 +27,7 @@ export default (env, args) => {
       extensions: ['*', '.js', '.jsx', '.json']
     },
     mode: args.mode,
-    // https://webpack.js.org/guides/production/#source-mapping
-    // https://webpack.js.org/configuration/devtool/
-    devtool: 'source-map',
+    devtool: isDev ? 'eval-source-map' : 'source-map',
     entry: path.join(sourcePath, 'index'),
     target: 'web',
     node: { fs: 'empty' },
@@ -46,13 +45,28 @@ export default (env, args) => {
       new webpack.HotModuleReplacementPlugin(),
 
       // webpack.DefinePlugin: Creates global constants which are configured at compile time.
-      /*
       new webpack.DefinePlugin({
         'process.env': {
-          NODE_ENV: JSON.stringify('production')
+          BASE_URL: JSON.stringify(BASE_URL),
+          ENV: JSON.stringify(NODE_ENV),
+          HOST: JSON.stringify(HOST),
+          IMAGES_URL: JSON.stringify(IMAGES_URL),
+          PORT: JSON.stringify(PORT),
+          RECAPTCHA_KEY: JSON.stringify(RECAPTCHA_KEY),
+
+          AUTH_CLIENT_ID: JSON.stringify(AUTH_CLIENT_ID),
+          AUTH_DOMAIN: JSON.stringify(AUTH_DOMAIN),
+          AUTH_RESPONSE_TYPE: JSON.stringify(AUTH_RESPONSE_TYPE),
+          AUTH_REDIRECT_URI: JSON.stringify(AUTH_REDIRECT_URI),
+          AUTH_SCOPE: JSON.stringify(AUTH_SCOPE),
+
+          MYSQL_DB: JSON.stringify(MYSQL_DB),
+          MYSQL_USER: JSON.stringify(MYSQL_USER),
+          MYSQL_PASS: JSON.stringify(MYSQL_PASS),
+          MYSQL_HOST: JSON.stringify(MYSQL_HOST),
+          MYSQL_PORT: JSON.stringify(MYSQL_PORT),
         }
       }),
-      */
 
       /*
       new webpack.ProvidePlugin({
@@ -73,18 +87,6 @@ export default (env, args) => {
       }),
 
       new HtmlWebpackPugPlugin(),
-
-      // Generate an external css file
-      new MiniCssExtractPlugin({
-        filename: path.join('css', 'styles.css')
-      }),
-
-      // ExtractTextPlugin: moves all the require/import "[fileName].css" in entry chunks
-      // into a separate single CSS file.
-      new ExtractTextPlugin({
-        filename: path.join('css', 'styles.css'),
-        allChunks: true
-      }),
 
       // CopyWebpackPlugin: copy files or dirs from one location to another.
       new CopyWebpackPlugin([
@@ -168,34 +170,6 @@ export default (env, args) => {
                 name: '[name].[ext]'
               }
             }
-          ]
-        },
-        {
-          test: /\.scss$/,
-          use: ExtractTextPlugin.extract({
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  localIdentName: '[hash:8]',
-                  modules: true,
-                  sourceMap: true
-                }
-              },
-              {
-                loader: 'sass-loader',
-                options: {
-                  data: `$publicUrl:'${BASE_URL}';$colorY:#e2d62d;`
-                }
-              }
-            ]
-          })
-        },
-        {
-          test: /\.css$/,
-          use: [
-            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-            'css-loader'
           ]
         },
       ]
