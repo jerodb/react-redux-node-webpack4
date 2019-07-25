@@ -1,17 +1,31 @@
 import '@babel/polyfill'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { hydrate } from 'react-dom'
-import App from './components/App'
-import { BASE_URL, NODE_ENV } from '../config'
+import { ThemeProvider } from '@material-ui/styles'
+import App from './App'
+import theme from './res/theme'
 
-window.onload = () => {
-  hydrate(
+const { BASE_URL, NODE_ENV } = process.env
+
+const Main = () => {
+  useEffect(() => {
+    const jssStyles = document.getElementById('jss-server-side')
+
+    if (jssStyles) {
+      jssStyles.parentNode.removeChild(jssStyles)
+    }
+  }, [])
+
+  return (
     <BrowserRouter basename={BASE_URL}>
-      <App />
-    </BrowserRouter>,
-    document.getElementById('app'),
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </BrowserRouter>
   )
-
-  if (NODE_ENV === 'development') module.hot.accept()
 }
+
+hydrate(<Main />, document.getElementById('app'))
+
+if (NODE_ENV === 'development') module.hot.accept()

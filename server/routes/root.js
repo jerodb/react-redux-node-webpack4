@@ -1,43 +1,29 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
-import { JssProvider, SheetsRegistry } from 'react-jss'
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
-import { createGenerateClassName } from '@material-ui/styles'
+import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles'
 import fs from 'fs'
 import path from 'path'
-import App from '../../src/components/App'
+import App from '../../src/App'
+import theme from '../../src/res/theme'
 
 export default (req, res) => {
-  // Create a sheetsRegistry instance.
-  const sheetsRegistry = new SheetsRegistry()
-
   // Create a sheetsManager instance.
-  const sheetsManager = new Map()
-
-  // Create a new class name generator.
-  const generateClassName = createGenerateClassName()
-
-  // Create Material UI theme
-  const theme = createMuiTheme({
-    palette: {
-      type: 'light',
-    },
-  })
+  const sheets = new ServerStyleSheets()
 
   // Render component to string.
   const markup = renderToString(
-    <StaticRouter location={req.url} context={{}}>
-      <JssProvider registry={sheetsRegistry} generateClassName={generateClassName}>
-        <MuiThemeProvider sheetsManager={sheetsManager} theme={theme}>
+    sheets.collect(
+      <StaticRouter location={req.url} context={{}}>
+        <ThemeProvider theme={theme}>
           <App />
-        </MuiThemeProvider>
-      </JssProvider>
-    </StaticRouter>,
+        </ThemeProvider>
+      </StaticRouter>,
+    )
   )
 
-  // Grab the CSS from our sheetsRegistry.
-  const styles = sheetsRegistry.toString()
+  // Grab the CSS from sheets.
+  const styles = sheets.toString()
 
   const template = path.join(__dirname, '..', '..', 'dist', 'index.html')
 
@@ -48,7 +34,7 @@ export default (req, res) => {
     // Inserts the rendered React HTML and styles.
     const document = data
       .replace('<div id="app"></div>', `<div id="app">${markup}</div>`)
-      .replace('<styles id="jss-server-side"></styles>', `<styles id="jss-server-side">${styles}</styles>`)
+      .replace('<style id="jss-server-side"></style>', `<style id="jss-server-side">${styles}</style>`)
 
     // Sends html with the rendered React markup and styles.
     return res.send(document)
