@@ -36,7 +36,7 @@ If you omit the .env file the app will start with this default:
 $ yarn
 ```
 
-- Build (webpack mode depends on NODE_ENV value set on .env):
+- Build *(webpack mode depends on **NODE_ENV** value set on **.env** file)*:
 
 ```
 $ yarn build
