@@ -17,12 +17,12 @@ const useStyles = makeStyles({
   },
 })
 
-export default ({ auth }) => {
+export default () => {
   const classes = useStyles()
 
   return (
     <>
-      <Header auth={auth} />
+      <Header />
       <div style={styles.container}>
         <div>LANDING</div>
         <Button className={classes.root}>BUTTON</Button>
