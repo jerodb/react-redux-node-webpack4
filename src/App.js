@@ -7,7 +7,6 @@ const { AUTH_CLIENT_ID } = process.env
 
 const isClient = typeof window !== 'undefined' && window.document
 
-
 const App = () => (
   <>
     <CssBaseline />
