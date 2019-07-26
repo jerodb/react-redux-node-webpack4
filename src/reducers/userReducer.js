@@ -5,6 +5,7 @@ const initialState = {
   email: '',
   emailVerified: false,
   expiresAt: 0,
+  isLoggedIn: localStorage.getItem('isLoggedIn') === 'true',
   idToken: '',
   picture: '',
   userId: '',
@@ -25,6 +26,7 @@ export const user = (state = initialState, action) => {
         emailVerified: action.emailVerified,
         expiresAt: action.expiresAt,
         idToken: action.idToken,
+        isLoggedIn: true,
         picture: action.picture,
         userId: action.userId,
         userName: action.userName

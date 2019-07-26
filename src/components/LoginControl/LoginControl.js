@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button'
-import AuthManager from '../lib/Auth0Manager'
-import { clearUser } from '../actions/userActions'
+import AuthManager from '../../lib/Auth0Manager'
+import { clearUser } from '../../actions/userActions'
+import { loading } from '../../res/images'
+import styles from './styles'
 
 function LoginControl({
-  expiresAt, onClearUser, picture, userName
+  expiresAt, isLoggedIn, onClearUser, picture, userName
 }) {
   const [authManager, setAuthManager] = useState(null)
 
@@ -49,6 +51,14 @@ function LoginControl({
     )
   }
 
+  if (isLoggedIn) {
+    return (
+      <div style={styles}>
+        <img src={loading} alt="loading" />
+      </div>
+    )
+  }
+
   return (
     <>
       <Button
@@ -63,10 +73,13 @@ function LoginControl({
 }
 
 const mapStateToProps = state => {
-  const { expiresAt, picture, userName } = state.user
+  const {
+    expiresAt, isLoggedIn, picture, userName
+  } = state.user
 
   return {
     expiresAt,
+    isLoggedIn,
     picture,
     userName
   }
