@@ -1,80 +1,71 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button'
+import AuthManager from '../lib/Auth0Manager'
 import { clearUser } from '../actions/userActions'
 
-class LoginControl extends Component {
-  constructor(props) {
-    super(props)
+function LoginControl({
+  expiresAt, onClearUser, picture, userName
+}) {
+  const [authManager, setAuthManager] = useState(null)
 
-    this.login = this.login.bind(this)
-    this.logout = this.logout.bind(this)
-  }
+  if (!authManager) setAuthManager(new AuthManager())
 
-  login() {
-    const { Auth } = this.props
-    Auth.login()
-  }
+  useEffect(() => {
+    if (authManager) {
+      const { isAuthenticated } = authManager
 
-  logout() {
-    const { Auth, onClearUser } = this.props
-    Auth.logout()
+      if (expiresAt && !isAuthenticated(expiresAt)) {
+        logout()
+      }
+    }
+  }, [])
+
+  const login = () => authManager.login()
+
+  const logout = () => {
+    authManager.logout()
     onClearUser()
   }
 
-  render() {
-    const {
-      Auth, expiresAt, onClearUser, picture, userName
-    } = this.props
-
-    if (Auth && expiresAt) {
-      const { isAuthenticated } = Auth
-
-      if (isAuthenticated(expiresAt)) {
-        return (
-          <>
-            <div style={{
-              display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: 12
-            }}
-            >
-              <span>{`${userName}`}</span>
-              <img style={{ width: 40, borderRadius: 50, marginLeft: 8 }} src={picture} alt="" />
-            </div>
-            <Button
-              variant="contained"
-              color="default"
-              onClick={this.logout}
-            >
-            Log Out
-            </Button>
-          </>
-        )
-      }
-
-      Auth.logout()
-      onClearUser()
-    }
-
+  if (picture && userName) {
     return (
       <>
+        <div style={{
+          display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: 12
+        }}
+        >
+          <span>{`${userName}`}</span>
+          <img style={{ width: 40, borderRadius: 50, marginLeft: 8 }} src={picture} alt="" />
+        </div>
         <Button
           variant="contained"
-          color="secondary"
-          onClick={this.login}
+          color="default"
+          onClick={logout}
         >
-          Log In
+        Log Out
         </Button>
       </>
     )
   }
+
+  return (
+    <>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={login}
+      >
+        Log In
+      </Button>
+    </>
+  )
 }
 
 const mapStateToProps = state => {
-  const { Auth } = state.auth
   const { expiresAt, picture, userName } = state.user
 
   return {
-    Auth,
     expiresAt,
     picture,
     userName

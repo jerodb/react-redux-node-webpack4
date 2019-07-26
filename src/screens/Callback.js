@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import NoSsr from '@material-ui/core/NoSsr'
 import AuthManager from '../lib/Auth0Manager'
 import { setUserSession } from '../actions/userActions'
-import { initAuth } from '../actions/authActions'
 import { loading } from '../res/images'
 
 const styles = {
@@ -14,26 +13,20 @@ const styles = {
   marginTop: '20%'
 }
 
-function Callback({
-  Auth, location, onInitAuth, onSetUserSession, userId
-}) {
+function Callback({ location, onSetUserSession, userId }) {
   useEffect(() => {
-    if (!Auth) {
-      const authManager = new AuthManager()
+    const authManager = new AuthManager()
 
-      onInitAuth(authManager)
-    } else {
-      const handleAuthentication = async () => {
-        if (/access_token|id_token|error/.test(location.hash)) {
-          return Auth.handleAuthentication()
-        }
-        return null
+    const handleAuthentication = async () => {
+      if (/access_token|id_token|error/.test(location.hash)) {
+        return authManager.handleAuthentication()
       }
-
-      handleAuthentication().then(session => {
-        if (session) onSetUserSession(session)
-      })
+      return null
     }
+
+    handleAuthentication().then(session => {
+      if (session) onSetUserSession(session)
+    })
   })
 
   if (userId) return <Redirect to="/" />
@@ -49,14 +42,12 @@ function Callback({
 
 
 const mapStateToProps = state => {
-  const { Auth } = state.auth
   const { userId } = state.user
 
-  return { Auth, userId }
+  return { userId }
 }
 
 const mapDispatchToProps = dispatch => ({
-  onInitAuth: Auth => dispatch(initAuth(Auth)),
   onSetUserSession: session => dispatch(setUserSession(session))
 })
 
