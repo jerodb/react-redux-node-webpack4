@@ -24,8 +24,6 @@ export default class Auth {
   handleAuthentication() {
     return new Promise(resolve => {
       this.auth0.parseHash(async (err, authResult) => {
-        console.log('authResult: ', authResult)
-
         if (authResult && authResult.accessToken && authResult.idToken) {
           const session = await this.setSession(authResult)
 
@@ -63,8 +61,6 @@ export default class Auth {
   renewSession() {
     return new Promise(resolve => {
       this.auth0.checkSession({}, async (err, authResult) => {
-        console.log('authResult: ', authResult)
-
         if (authResult && authResult.accessToken && authResult.idToken) {
           const session = await this.setSession(authResult)
 
