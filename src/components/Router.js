@@ -30,7 +30,7 @@ const Router = () => (
           key={key}
           exact={exact}
           path={path}
-          component={Comp}
+          render={({ location }) => <Comp location={location} />}
         />
       ))}
       )
