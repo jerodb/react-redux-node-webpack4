@@ -1,21 +1,20 @@
 import React from 'react'
+import Button from '@material-ui/core/Button'
+import NoSsr from '@material-ui/core/NoSsr'
+import LoginControl from '../LoginControl'
 import styles from './styles'
 
-/*
-const baselUrl = process.env.BASE_URL
-const navBtns = [
-  { value: 'HOME', link: baselUrl },
-  { value: 'FACILITIES', link: `${baselUrl}facilities/` },
-  { value: 'RESEARCH', link: `${baselUrl}research/` },
-  { value: 'EDUCATION', link: `${baselUrl}education/` },
-  { value: 'PROJECTS', link: `${baselUrl}projects/dugongs/` },
-  { value: 'OUR TEAM', link: `${baselUrl}our-team/` },
-  { value: 'CONTACT', link: `${baselUrl}contact/` },
-]
-*/
-
 export default () => (
-  <div style={styles.container}>
-    HEADER
+  <div style={styles.container} className="paddingTop paddingH">
+    <div style={styles.topWrapper}>
+      <div style={styles.logo} />
+      <div style={styles.nav}>
+        <NoSsr><LoginControl /></NoSsr>
+      </div>
+    </div>
+    <div style={styles.welcome}>Punch line!</div>
+    <Button variant="contained" color="primary">
+      Test Sample
+    </Button>
   </div>
 )
