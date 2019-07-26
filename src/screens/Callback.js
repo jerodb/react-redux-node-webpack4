@@ -1,5 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 import NoSsr from '@material-ui/core/NoSsr'
+import AuthManager from '../lib/Auth0Manager'
+import { setUserSession } from '../actions/userActions'
+import { initAuth } from '../actions/authActions'
 import { loading } from '../res/images'
 
 const styles = {
@@ -9,30 +14,53 @@ const styles = {
   marginTop: '20%'
 }
 
-class Callback extends React.Component {
-  componentDidMount() {
-    this.handleAuthentication()
-  }
+function Callback({
+  Auth, location, onInitAuth, onSetUserSession, userId
+}) {
+  useEffect(() => {
+    if (!Auth) {
+      const authManager = new AuthManager()
 
-  handleAuthentication = () => {
-    const { auth, location } = this.props
-    console.log('this.props: ', this.props)
+      onInitAuth(authManager)
+    } else {
+      const handleAuthentication = async () => {
+        if (/access_token|id_token|error/.test(location.hash)) {
+          return Auth.handleAuthentication()
+        }
+        return null
+      }
 
-    if (/access_token|id_token|error/.test(location.hash)) {
-      console.log('location.hash: ', location.hash)
-      auth.handleAuthentication()
+      handleAuthentication().then(session => {
+        if (session) onSetUserSession(session)
+      })
     }
-  }
+  })
 
-  render() {
-    return (
-      <NoSsr>
-        <div style={styles}>
-          <img src={loading} alt="loading" />
-        </div>
-      </NoSsr>
-    )
-  }
+  if (userId) return <Redirect to="/" />
+
+  return (
+    <NoSsr>
+      <div style={styles}>
+        <img src={loading} alt="loading" />
+      </div>
+    </NoSsr>
+  )
 }
 
-export default Callback
+
+const mapStateToProps = state => {
+  const { Auth } = state.auth
+  const { userId } = state.user
+
+  return { Auth, userId }
+}
+
+const mapDispatchToProps = dispatch => ({
+  onInitAuth: Auth => dispatch(initAuth(Auth)),
+  onSetUserSession: session => dispatch(setUserSession(session))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Callback)
