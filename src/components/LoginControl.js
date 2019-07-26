@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button'
+import { clearUser } from '../actions/userActions'
 
-export default class LoginControl extends Component {
+class LoginControl extends Component {
   constructor(props) {
     super(props)
 
@@ -9,62 +11,81 @@ export default class LoginControl extends Component {
     this.logout = this.logout.bind(this)
   }
 
-  componentDidMount() {
-    const { auth } = this.props
-
-    if (localStorage.getItem('isLoggedIn') === 'true') {
-      auth.renewSession()
-    }
-  }
-
   login() {
-    const { auth } = this.props
-    auth.login()
+    const { Auth } = this.props
+    Auth.login()
   }
 
   logout() {
-    const { auth } = this.props
-    auth.logout()
+    const { Auth, onClearUser } = this.props
+    Auth.logout()
+    onClearUser()
   }
 
   render() {
-    const { auth } = this.props
-    const { isAuthenticated, userName, picture } = auth
+    const {
+      Auth, expiresAt, onClearUser, picture, userName
+    } = this.props
+
+    if (Auth && expiresAt) {
+      const { isAuthenticated } = Auth
+
+      if (isAuthenticated(expiresAt)) {
+        return (
+          <>
+            <div style={{
+              display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: 12
+            }}
+            >
+              <span>{`${userName}`}</span>
+              <img style={{ width: 40, borderRadius: 50, marginLeft: 8 }} src={picture} alt="" />
+            </div>
+            <Button
+              variant="contained"
+              color="default"
+              onClick={this.logout}
+            >
+            Log Out
+            </Button>
+          </>
+        )
+      }
+
+      Auth.logout()
+      onClearUser()
+    }
 
     return (
       <>
-        {
-          !isAuthenticated() && (
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={this.login}
-          >
-            Log In
-          </Button>
-          )
-        }
-        {
-          isAuthenticated() && (
-            <>
-              <div style={{
-                display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: 12
-              }}
-              >
-                <span>{`${userName}`}</span>
-                <img style={{ width: 40, borderRadius: 50, marginLeft: 8 }} src={picture} alt="" />
-              </div>
-              <Button
-                variant="contained"
-                color="default"
-                onClick={this.logout}
-              >
-                Log Out
-              </Button>
-            </>
-          )
-        }
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={this.login}
+        >
+          Log In
+        </Button>
       </>
     )
   }
 }
+
+const mapStateToProps = state => {
+  const { Auth } = state.auth
+  const { expiresAt, picture, userName } = state.user
+
+  return {
+    Auth,
+    expiresAt,
+    picture,
+    userName
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  onClearUser: () => dispatch(clearUser())
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginControl)
