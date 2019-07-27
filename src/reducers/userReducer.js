@@ -16,7 +16,8 @@ export const user = (state = initialState, action) => {
   switch (action.type) {
     case USER_CLEAR:
       return {
-        ...initialState
+        ...initialState,
+        isLoggedIn: false
       }
     case USER_SET:
       return {

@@ -26,8 +26,8 @@ function LoginControl({
   const login = () => authManager.login()
 
   const logout = () => {
-    authManager.logout()
     onClearUser()
+    authManager.logout()
   }
 
   if (picture && userName) {
