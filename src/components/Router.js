@@ -1,22 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import routes from '../routes'
 
-class Services extends React.Component {
-  componentDidUpdate(prevProps) {
-    this.ScrollToTop(prevProps.location)
-  }
+function Services(props) {
+  const { location } = props
 
-  ScrollToTop(prevLocation) {
-    const { location } = this.props
-    // eslint-disable-next-line no-undef
-    if (location !== prevLocation) window.scrollTo(0, 0)
-  }
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location])
 
-  render() {
-    return null
-  }
+  return null
 }
 
 const Router = () => (
@@ -37,9 +30,5 @@ const Router = () => (
     </Switch>
   </div>
 )
-
-Services.propTypes = {
-  location: PropTypes.object.isRequired,
-}
 
 export default Router

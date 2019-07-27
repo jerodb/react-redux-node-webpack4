@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import Activity from '../Activity'
-import LoggedIn from './LoggedInComponent'
-import LoggedOut from './LoggedOutComponent'
+import LoginControlComponent from './LoginControlComponent'
 import { clearUser } from '../../actions/userActions'
 
 function LoginControlContainer({
@@ -25,19 +23,15 @@ function LoginControlContainer({
     AuthManager.logout()
   }
 
-  if (picture && userName) {
-    return (
-      <LoggedIn
-        logout={logout}
-        picture={picture}
-        userName={userName}
-      />
-    )
-  }
-
-  if (isLoggedIn) return <Activity styles={{}} />
-
-  return <LoggedOut login={login} />
+  return (
+    <LoginControlComponent
+      isLoggedIn={isLoggedIn}
+      login={login}
+      logout={logout}
+      picture={picture}
+      userName={userName}
+    />
+  )
 }
 
 const mapStateToProps = state => {

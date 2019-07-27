@@ -2,15 +2,9 @@ import React, { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import NoSsr from '@material-ui/core/NoSsr'
-import Activity from '../components/Activity'
-import { setUserSession } from '../actions/userActions'
-
-const styles = {
-  display: 'flex',
-  justifyContent: 'center',
-  width: '100%',
-  marginTop: '20%'
-}
+import Activity from '../../components/Activity'
+import { setUserSession } from '../../actions/userActions'
+import activityStyles from './styles'
 
 function Callback({
   AuthManager, location, onSetUserSession, userId
@@ -32,7 +26,7 @@ function Callback({
 
   return (
     <NoSsr>
-      <Activity styles={styles} />
+      <Activity styles={activityStyles} />
     </NoSsr>
   )
 }
