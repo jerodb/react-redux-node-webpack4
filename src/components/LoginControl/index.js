@@ -1,3 +1,3 @@
-import LoginControl from './LoginControl'
+import LoginControl from './LoginControlContainer'
 
 export default LoginControl
