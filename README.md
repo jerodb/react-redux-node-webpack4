@@ -3,7 +3,7 @@
 - SSR ready.
 - **[MaterialUI](https://material-ui.com/getting-started/usage/)** integrated. (Material UI styles included when SSR)
 - Using **[pug](https://pugjs.org/api/getting-started.html)** for templates.
-- **[Auth0](https://auth0.com/docs)** authentication login integrated. **(optional)**
+- **[Auth0](https://auth0.com/docs)** authentication integrated. **(optional)**
 - Ready to use **[Mysql](https://dev.mysql.com/doc/refman/8.0/en/)** database api. **(optional)**
   
 &nbsp;
