@@ -72,11 +72,12 @@ AUTH_SCOPE=
 A built-in 'login/logged user info' component will show on the Home screen.
 
 &nbsp;
-## Include Mysql
+## Include Mysql database
 
 - Add to .env file:
 
 ```
+DATABASE=mysql
 MYSQL_DB=
 MYSQL_USER=
 MYSQL_PASS=
