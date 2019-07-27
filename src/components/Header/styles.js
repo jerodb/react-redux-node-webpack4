@@ -9,6 +9,7 @@ const styles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    minHeight: 140,
     padding: '8px 16px',
   },
   wrapper: {
