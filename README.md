@@ -1,7 +1,7 @@
 # React-Redux-Node-Webpack4
 
 - SSR ready.
-- **[MaterialUI](https://material-ui.com/getting-started/usage/)** integrated. (Material UI styles included when SSR)
+- **[MaterialUI](https://material-ui.com/getting-started/usage/)** v.4 integrated. (Material UI styles included when SSR)
 - Using **[pug](https://pugjs.org/api/getting-started.html)** for templates.
 - **[Auth0](https://auth0.com/docs)** authentication. **(optional)**
 - Ready to connect **[Mysql](https://dev.mysql.com/doc/refman/8.0/en/)** database. **(optional)**
