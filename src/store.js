@@ -15,7 +15,6 @@ if (DEV) {
 }
 
 const store = createStore(rootReducer, applyMiddleware(...middleware))
-const persistor = {} // persistStore(store, applyMiddleware(...middleware), () => {})
-const configureStore = () => ({ persistor, store })
+const configureStore = () => ({ store })
 
 export default configureStore
