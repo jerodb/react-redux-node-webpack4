@@ -57,7 +57,7 @@ $ yarn dev
 ```
   
 &nbsp;
-## Include Auth0 authentication login
+## Include Auth0 authentication
 
 - Add to .env file:
 
@@ -68,6 +68,8 @@ AUTH_RESPONSE_TYPE=
 AUTH_REDIRECT_URI=
 AUTH_SCOPE=
 ```
+  
+A built-in 'login/logged user info' component will show on the Home screen.
 
 &nbsp;
 ## Include Mysql
