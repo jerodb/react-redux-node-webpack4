@@ -99,3 +99,11 @@ MYSQL_PORT=
 
 **IMPORTANT:** MYSQL_USER and MYSQL_PASS values in .env file must be the same as user and password in .my.cnf file.
 
+&nbsp;
+## TO DO
+- use FETCH for fetching
+- refactor to type script
+- remove harcoded paths in server
+- Add multilanguage
+- Add testing
+
