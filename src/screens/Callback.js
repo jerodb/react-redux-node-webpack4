@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import NoSsr from '@material-ui/core/NoSsr'
+import Activity from '../components/Activity'
 import { setUserSession } from '../actions/userActions'
-import { loading } from '../res/images'
 
 const styles = {
   display: 'flex',
@@ -32,9 +32,7 @@ function Callback({
 
   return (
     <NoSsr>
-      <div style={styles}>
-        <img src={loading} alt="loading" />
-      </div>
+      <Activity styles={styles} />
     </NoSsr>
   )
 }
