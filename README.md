@@ -1,8 +1,9 @@
-# React-Node-Webpack4 App Skeleton
+# React-Redux-Node-Webpack4 App Skeleton
 
 - SSR ready.
 - **[MaterialUI](https://material-ui.com/getting-started/usage/)** integrated. (Material UI styles included when SSR)
 - Using **[pug](https://pugjs.org/api/getting-started.html)** for templates.
+- **[Auth0](https://auth0.com/docs)** authentication login integrated. **(optional)**
 - Ready to use **[Mysql](https://dev.mysql.com/doc/refman/8.0/en/)** database api. **(optional)**
   
 &nbsp;
@@ -56,6 +57,19 @@ $ yarn dev
 ```
   
 &nbsp;
+## Include Auth0 authentication login
+
+- Add to .env file:
+
+```
+AUTH_CLIENT_ID=
+AUTH_DOMAIN=
+AUTH_RESPONSE_TYPE=
+AUTH_REDIRECT_URI=
+AUTH_SCOPE=
+```
+
+&nbsp;
 ## Include Mysql
 
 - Add to .env file:
@@ -81,3 +95,4 @@ MYSQL_PORT=
 ```
 
 **IMPORTANT:** MYSQL_USER and MYSQL_PASS values in .env file must be the same as user and password in .my.cnf file.
+
