@@ -1,8 +1,8 @@
 import express from 'express'
-import user from './user'
+import callback from './callback'
 
 const router = express.Router()
 
-router.post('/set/user', user.setUser)
+router.get('/callback', callback)
 
 export default router

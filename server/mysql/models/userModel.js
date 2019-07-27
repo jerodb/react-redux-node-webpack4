@@ -1,7 +1,6 @@
 import Sequelize from 'sequelize'
-import { sequelize } from '../services/mysql'
 
-const userModel = sequelize.define(
+const userModel = sequelize => sequelize.define(
   'users',
   {
     id: {
@@ -34,4 +33,4 @@ const userModel = sequelize.define(
   },
 )
 
-module.exports = userModel
+export default userModel

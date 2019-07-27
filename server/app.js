@@ -4,9 +4,9 @@ import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import path from 'path'
-import { verifyConnection } from './services/mysql'
+import { verifyDatabaseConnection } from './services'
 import routes from './routes'
-import { MYSQL_DB } from '../config'
+import { DATABASE } from '../config'
 
 // Init express app
 const app = express()
@@ -35,7 +35,7 @@ app.use('/images', express.static(path.join(__dirname, '..', 'dist', 'images')))
 app.use('/js', express.static(path.join(__dirname, '..', 'dist', 'js')))
 
 // ==============================================================================
-// VIEW CONFIGURATION
+// VIEW CONFIGURATION (No need to use a view engine. Serving plain html.)
 // ==============================================================================
 // app.set('views', path.join(__dirname, '..', 'dist'))
 // app.set('view engine', 'pug')
@@ -48,7 +48,7 @@ app.use('/', routes)
 // ==============================================================================
 // VERIFY DATABASE CONNECTION
 // ==============================================================================
-if (MYSQL_DB) verifyConnection()
+if (DATABASE) verifyDatabaseConnection()
 
 // ==============================================================================
 // ERRORS HANDLER
@@ -70,4 +70,4 @@ app.use((err, req, res, next) => {
   next()
 })
 
-module.exports = app
+export default app

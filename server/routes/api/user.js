@@ -1,41 +1,30 @@
 import uuid from 'uuid/v4'
-import { Users } from '../../models'
+import { setUserService } from '../../services'
 
-const setUser = (req, res) => {
+const setUser = async (req, res) => {
   const { authId } = req.body
 
-  const raw = true
-  const where = { authId }
   const idStr = uuid()
   const id = Buffer.from(idStr.replace(/-/g, ''), 'hex')
 
   let datetime = new Date()
   datetime = JSON.stringify(datetime).split('.')[0].replace('T', ' ')
 
-  // Set the default properties if it doesn't exist
-  const defaults = {
+  const data = {
+    authId,
     id,
     idStr,
-    authId,
-    createdAt: datetime,
-    updatedAt: datetime
+    datetime
   }
 
-  try {
-    Users.findOrCreate({
-      raw,
-      where,
-      defaults
-    }).then(result => {
-      console.log('results: ', result)
+  const userSet = await setUserService(data)
 
-      res.json(true)
-    })
-  } catch (err) {
-    console.log('ERROR - Users.findOrCreate:', err)
-
-    res.json(false)
+  if (userSet && userSet.error) {
+    // eslint-disable-next-line no-console
+    console.log('setUserService Error:', userSet.error)
   }
+
+  res.json(userSet)
 }
 
 export default { setUser }

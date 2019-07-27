@@ -39,7 +39,4 @@ export default (req, res) => {
     // Sends html with the rendered React markup and styles.
     return res.send(document)
   })
-
-  // render the index template with the rendered React HTML and styles.
-  // return res.render('index', { markup, styles })
 }
