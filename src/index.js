@@ -34,4 +34,5 @@ const Main = () => {
 
 hydrate(<Main />, document.getElementById('app'))
 
+// https://webpack.js.org/api/hot-module-replacement/
 if (NODE_ENV === 'development') module.hot.accept()
