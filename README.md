@@ -1,4 +1,4 @@
-# React-Redux-Node-Webpack4 App Skeleton
+# React-Redux-Node-Webpack4
 
 - SSR ready.
 - **[MaterialUI](https://material-ui.com/getting-started/usage/)** integrated. (Material UI styles included when SSR)
