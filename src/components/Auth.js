@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import AuthManager from '../lib/Auth0Manager'
 import { setUserSession } from '../actions/userActions'
 
-function AuthControl({ isLoggedIn, onSetUserSession }) {
+function AuthControl({ AuthManager, isLoggedIn, onSetUserSession }) {
   useEffect(() => {
-    const authManager = new AuthManager()
-
     if (isLoggedIn) {
-      const renewSession = async () => authManager.renewSession()
+      const renewSession = async () => AuthManager.renewSession()
 
       renewSession().then(session => { if (session) onSetUserSession(session) })
     }
@@ -18,10 +15,12 @@ function AuthControl({ isLoggedIn, onSetUserSession }) {
 }
 
 const mapStateToProps = state => {
+  const { AuthManager } = state.auth
   const { isLoggedIn } = state.user
 
   return {
-    isLoggedIn
+    AuthManager,
+    isLoggedIn,
   }
 }
 

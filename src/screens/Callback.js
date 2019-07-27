@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import NoSsr from '@material-ui/core/NoSsr'
-import AuthManager from '../lib/Auth0Manager'
 import { setUserSession } from '../actions/userActions'
 import { loading } from '../res/images'
 
@@ -13,13 +12,13 @@ const styles = {
   marginTop: '20%'
 }
 
-function Callback({ location, onSetUserSession, userId }) {
+function Callback({
+  AuthManager, location, onSetUserSession, userId
+}) {
   useEffect(() => {
-    const authManager = new AuthManager()
-
     const handleAuthentication = async () => {
       if (/access_token|id_token|error/.test(location.hash)) {
-        return authManager.handleAuthentication()
+        return AuthManager.handleAuthentication()
       }
       return null
     }
@@ -42,9 +41,13 @@ function Callback({ location, onSetUserSession, userId }) {
 
 
 const mapStateToProps = state => {
+  const { AuthManager } = state.auth
   const { userId } = state.user
 
-  return { userId }
+  return {
+    AuthManager,
+    userId,
+  }
 }
 
 const mapDispatchToProps = dispatch => ({
