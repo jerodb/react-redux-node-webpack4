@@ -1,4 +1,3 @@
-- var includeRecaptcha = htmlWebpackPlugin.options.includeRecaptcha
 - var includeAuth = htmlWebpackPlugin.options.includeAuth
 
 doctype html
@@ -7,9 +6,6 @@ html(lang='en')
     include includes/commonMetasLinks
 
     title Title Me
-    
-    if includeRecaptcha
-      include includes/recaptcha
 
     // material-UI styles are inserted here when SSR
     style(id='jss-server-side')
