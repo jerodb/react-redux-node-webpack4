@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     <div className={classes.container}>
-      Need some Footer (?)
+      Maybe a footer here
     </div>
   )
 }
