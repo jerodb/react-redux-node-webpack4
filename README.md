@@ -4,7 +4,6 @@
 - **[MaterialUI](https://material-ui.com/getting-started/usage/)** v.4 integrated. (Material UI styles included when SSR)
 - Using **[pug](https://pugjs.org/api/getting-started.html)** for templates.
 - **[Auth0](https://auth0.com/docs)** authentication. **(optional)**
-- Ready to connect **[Mysql](https://dev.mysql.com/doc/refman/8.0/en/)** database. **(optional)**
   
 &nbsp;
 ## Getting started
@@ -69,41 +68,13 @@ AUTH_REDIRECT_URI=
 AUTH_SCOPE=
 ```
   
-A built-in 'login/logged user info' component will show on the Home screen.
-
-&nbsp;
-## Include Mysql database
-
-- Add to .env file:
-
-```
-DATABASE=mysql
-MYSQL_DB=
-MYSQL_USER=
-MYSQL_PASS=
-MYSQL_HOST=
-MYSQL_PORT=
-```
-
-- Create .my.cnf in the user home dir or in mysql config dir if possible. Add the following, complete with mysql user and pass:
-
-```
-  [mysql]
-  user =
-  password =
-
-  [mysqlimport]
-  user =
-  password =
-```
-
-**IMPORTANT:** MYSQL_USER and MYSQL_PASS values in .env file must be the same as user and password in .my.cnf file.
+A built-in 'login/logged user info' component will be shown on the Home screen.
 
 &nbsp;
 ## TO DO
 - use FETCH for fetching
-- refactor to type script
 - remove harcoded paths in server
+- refactor to type script
 - Add multilanguage
 - Add testing
 
