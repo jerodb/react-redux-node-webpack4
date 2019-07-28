@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import routes from '../routes'
 
+// Service that scrolls view to top when changing route.
 function Services(props) {
   const { location } = props
 
