@@ -3,6 +3,6 @@ import user from './user'
 
 const router = express.Router()
 
-router.post('/set/user', user.setUser)
+router.post('/user/info', user.getInfo)
 
 export default router

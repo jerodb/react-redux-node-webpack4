@@ -1,30 +1,11 @@
-import uuid from 'uuid/v4'
-import { setUserService } from '../../services'
+const getInfo = async (req, res) => {
+  const userInfo = req.body
 
-const setUser = async (req, res) => {
-  const { authId } = req.body
+  console.log('User info received: ', userInfo)
 
-  const idStr = uuid()
-  const id = Buffer.from(idStr.replace(/-/g, ''), 'hex')
+  // Do something with the user info.
 
-  let datetime = new Date()
-  datetime = JSON.stringify(datetime).split('.')[0].replace('T', ' ')
-
-  const data = {
-    authId,
-    id,
-    idStr,
-    datetime
-  }
-
-  const userSet = await setUserService(data)
-
-  if (userSet && userSet.error) {
-    // eslint-disable-next-line no-console
-    console.log('setUserService Error:', userSet.error)
-  }
-
-  res.json(userSet)
+  res.json('Response')
 }
 
-export default { setUser }
+export default { getInfo }
