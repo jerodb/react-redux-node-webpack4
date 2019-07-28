@@ -5,9 +5,8 @@ import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import {
-  BASE_URL, HOST, IMAGES_URL, NODE_ENV, PORT, RECAPTCHA_KEY,
-  AUTH_CLIENT_ID, AUTH_DOMAIN, AUTH_RESPONSE_TYPE, AUTH_REDIRECT_URI, AUTH_SCOPE,
-  MYSQL_DB, MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_PORT
+  BASE_URL, HOST, IMAGES_URL, NODE_ENV, PORT,
+  AUTH_CLIENT_ID, AUTH_DOMAIN, AUTH_RESPONSE_TYPE, AUTH_REDIRECT_URI, AUTH_SCOPE
 } from './config'
 
 const buildPath = path.join(__dirname, 'dist')
@@ -17,8 +16,7 @@ const mode = NODE_ENV
 
 const templateParameters = {
   imagesUrl: IMAGES_URL,
-  includeAuth: !!AUTH_CLIENT_ID,
-  includeRecaptcha: !!RECAPTCHA_KEY,
+  includeAuth: !!AUTH_CLIENT_ID
 }
 
 export default () => {
@@ -55,19 +53,11 @@ export default () => {
           IMAGES_URL: JSON.stringify(IMAGES_URL),
           PORT: JSON.stringify(PORT),
 
-          RECAPTCHA_KEY: JSON.stringify(RECAPTCHA_KEY),
-
           AUTH_CLIENT_ID: JSON.stringify(AUTH_CLIENT_ID),
           AUTH_DOMAIN: JSON.stringify(AUTH_DOMAIN),
           AUTH_RESPONSE_TYPE: JSON.stringify(AUTH_RESPONSE_TYPE),
           AUTH_REDIRECT_URI: JSON.stringify(AUTH_REDIRECT_URI),
           AUTH_SCOPE: JSON.stringify(AUTH_SCOPE),
-
-          MYSQL_DB: JSON.stringify(MYSQL_DB),
-          MYSQL_USER: JSON.stringify(MYSQL_USER),
-          MYSQL_PASS: JSON.stringify(MYSQL_PASS),
-          MYSQL_HOST: JSON.stringify(MYSQL_HOST),
-          MYSQL_PORT: JSON.stringify(MYSQL_PORT),
         }
       }),
 

@@ -4,9 +4,7 @@ import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import path from 'path'
-import { verifyDatabaseConnection } from './services'
 import routes from './routes'
-import { DATABASE } from '../config'
 
 // Init express app
 const app = express()
@@ -44,11 +42,6 @@ app.use('/js', express.static(path.join(__dirname, '..', 'dist', 'js')))
 // ROUTES
 // ==============================================================================
 app.use('/', routes)
-
-// ==============================================================================
-// VERIFY DATABASE CONNECTION
-// ==============================================================================
-if (DATABASE) verifyDatabaseConnection()
 
 // ==============================================================================
 // ERRORS HANDLER
