@@ -8,9 +8,12 @@ export default () => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.wrapper}>
-        <div className={classes.logo} />
-        <div className={classes.nav}>
+      <div className={classes.logo} />
+      <div className={classes.navBar}>
+        <ul className={classes.nav}>
+          <li className={classes.navBtn}>About</li>
+        </ul>
+        <div className={classes.loginControl}>
           <NoSsr><LoginControl /></NoSsr>
         </div>
       </div>

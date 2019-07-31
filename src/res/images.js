@@ -7,4 +7,4 @@ const { IMAGES_URL } = process.env
 const url = IMAGES_URL
 
 export const loading = `${url}loading.svg`
-export const arrowTop = `${url}arrow-top.png`
+export const logo = `${url}logo.svg`

@@ -7,8 +7,6 @@ const styles = makeStyles({
     flexDirection: 'column',
     height: 110,
     justifyContent: 'center',
-    minWidth: 130,
-    padding: 10,
   },
   loggedInWrapper: {
     alignItems: 'center',
@@ -16,6 +14,7 @@ const styles = makeStyles({
     flexDirection: 'row',
     justifyContent: 'center',
     marginBottom: 12,
+    width: 100,
   },
   pic: {
     width: 40,

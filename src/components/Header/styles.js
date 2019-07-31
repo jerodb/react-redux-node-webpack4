@@ -1,42 +1,35 @@
 import { makeStyles } from '@material-ui/styles'
-// import { logo } from '../../res/images'
+import { logo } from '../../res/images'
 
 const styles = makeStyles({
   container: {
-    alignItems: 'center',
-    backgroundColor: '#eeeeee',
-    borderBottom: '1px solid #aaaaaa',
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    minHeight: 140,
-    padding: '8px 16px',
+    padding: 16,
   },
-  wrapper: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '100%',
+  loginControl: {
+    marginLeft: 'auto'
   },
   logo: {
-    // background: `url(${logo}) no-repeat right top`,
-    backgroundSize: 'cover',
-    height: 58,
-    width: 200,
+    background: `url(${logo}) no-repeat right top`,
+    display: 'table',
+    height: 110,
+    width: 118,
   },
   nav: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    marginLeft: 'auto',
+    listStylePosition: 'outside',
+    listStyleType: 'none',
   },
-  login: {
-    alignItems: 'flex-end',
-    justifyContent: 'center',
+  navBar: {
+    display: 'flex',
+    width: '100%',
   },
-  welcome: {
-    paddingBottom: 100,
-    paddingTop: 72,
-  }
+  navBtn: {
+    fontSize: '1.5em',
+    fontWeight: '500',
+  },
 })
 
 export default styles
