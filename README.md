@@ -16,10 +16,9 @@
   NODE_ENV=
   PORT=
 ```
-
+  
 If you omit the .env file the app will start with this default:
-
-
+  
 ```
   BASE_URL=/
   HOST=http://localhost:3000
@@ -68,7 +67,7 @@ AUTH_REDIRECT_URI=
 AUTH_SCOPE=
 ```
   
-A built-in 'login/logged user info' component will be shown on the Home screen.
+A built-in LoginControl component will be shown on the Home screen.
 
 &nbsp;
 ## TO DO
