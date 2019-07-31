@@ -9,6 +9,14 @@ const theme = createMuiTheme({
     paddingRight: 16,
     paddingTop: 30,
   },
+  overrides: {
+    MuiList: {
+      padding: {
+        paddingBottom: 0,
+        paddingTop: 0,
+      },
+    },
+  },
   palette: {
     primary: {
       main: '#556cd6',

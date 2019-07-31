@@ -25,9 +25,5 @@ export default ({
     Template = () => <LoggedOut login={login} />
   }
 
-  return (
-    <div className={classes.container}>
-      <Template />
-    </div>
-  )
+  return <Template />
 }

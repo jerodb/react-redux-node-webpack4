@@ -5,27 +5,36 @@ const styles = makeStyles({
     display: 'flex',
     width: 50,
   },
-  container: {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    height: 110,
-    justifyContent: 'center',
+  iconButton: {
+    padding: 6,
   },
-  loggedInWrapper: {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginBottom: 12,
-    width: 100,
+  login: {
+    height: 48,
+    padding: '0 30px',
   },
   pic: {
     width: 40,
     height: 40,
     borderRadius: 50,
-    marginLeft: 8
-  }
+  },
+  userMenu: {
+    backgroundColor: '#525252',
+    color: '#ffffff',
+    width: 120,
+    '& li': {
+      paddingLeft: 10,
+      paddingRight: 10,
+    },
+  },
+  userName: {
+    backgroundColor: '#777777',
+    borderBottom: '1px solid #cccccc',
+    fontSize: '1.1em',
+    paddingBottom: 6,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 6,
+  },
 })
 
 export default styles

@@ -7,7 +7,10 @@ const styles = makeStyles({
     padding: 16,
   },
   loginControl: {
-    marginLeft: 'auto'
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginLeft: 'auto',
   },
   logo: {
     background: `url(${logo}) no-repeat right top`,
