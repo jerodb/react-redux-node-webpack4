@@ -1,8 +1,8 @@
 import express from 'express'
-import user from './user'
+import server from './server'
 
 const router = express.Router()
 
-router.post('/user/info', user.getInfo)
+router.get('/server/info', server.getServerInfo)
 
 export default router
