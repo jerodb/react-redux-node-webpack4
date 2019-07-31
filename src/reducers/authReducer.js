@@ -4,4 +4,4 @@ const initialState = {
   AuthManager: new AuthManager()
 }
 
-export const auth = (state = initialState, action) => state
+export const auth = (state = initialState) => state
