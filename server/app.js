@@ -26,7 +26,7 @@ app.use(bodyParser.json())
 // support encoded bodies.
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// define the folder that will be used for static content.
+// define the folders that will be used for static content.
 app.use(express.static(path.join(__dirname, '..', 'dist', 'root')))
 app.use('/css', express.static(path.join(__dirname, '..', 'dist', 'css')))
 app.use('/images', express.static(path.join(__dirname, '..', 'dist', 'images')))
@@ -44,7 +44,7 @@ app.use('/js', express.static(path.join(__dirname, '..', 'dist', 'js')))
 app.use('/', routes)
 
 // ==============================================================================
-// ERRORS HANDLER
+// ERROR HANDLER
 // ==============================================================================
 app.use((err, req, res, next) => {
   let msg = 'An error has occured'
