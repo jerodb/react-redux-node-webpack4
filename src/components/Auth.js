@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { setUserSession } from '../actions/userActions'
 
-function AuthControl({ AuthManager, isLoggedIn, onSetUserSession }) {
+function Auth({ AuthManager, isLoggedIn, onSetUserSession }) {
   useEffect(() => {
     if (isLoggedIn) {
       const renewSession = async () => AuthManager.renewSession()
@@ -31,4 +31,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AuthControl)
+)(Auth)
