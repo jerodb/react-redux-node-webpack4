@@ -1,6 +1,10 @@
 import { makeStyles } from '@material-ui/styles'
 
 const styles = makeStyles({
+  activity: {
+    display: 'flex',
+    width: 50,
+  },
   container: {
     alignItems: 'center',
     display: 'flex',
@@ -23,12 +27,5 @@ const styles = makeStyles({
     marginLeft: 8
   }
 })
-
-export const activityStyles = {
-  activity: {
-    display: 'flex',
-    width: 50,
-  },
-}
 
 export default styles

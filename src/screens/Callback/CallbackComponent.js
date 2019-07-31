@@ -4,11 +4,13 @@ import { connect } from 'react-redux'
 import NoSsr from '@material-ui/core/NoSsr'
 import Activity from '../../components/Activity'
 import { setUserSession } from '../../actions/userActions'
-import activityStyles from './styles'
+import styles from './styles'
 
 function Callback({
   AuthManager, location, onSetUserSession, userId
 }) {
+  const classes = styles()
+
   useEffect(() => {
     const handleAuthentication = async () => {
       if (/access_token|id_token|error/.test(location.hash)) {
@@ -26,7 +28,9 @@ function Callback({
 
   return (
     <NoSsr>
-      <Activity styles={activityStyles} />
+      <div className={classes.activity}>
+        <Activity />
+      </div>
     </NoSsr>
   )
 }

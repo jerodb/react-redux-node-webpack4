@@ -2,7 +2,7 @@ import React from 'react'
 import Activity from '../Activity'
 import LoggedIn from './LoggedInView'
 import LoggedOut from './LoggedOutView'
-import styles, { activityStyles } from './styles'
+import styles from './styles'
 
 export default ({
   isLoggedIn, login, logout, picture, userName
@@ -20,7 +20,7 @@ export default ({
       />
     )
   } else if (isLoggedIn) {
-    Template = () => <Activity styles={activityStyles} />
+    Template = () => <div className={classes.activity}><Activity /></div>
   } else {
     Template = () => <LoggedOut login={login} />
   }
