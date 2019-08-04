@@ -9,7 +9,7 @@ const handleErrors = response => {
   return response.json()
 }
 
-const getServerInfo = () => fetch(`${HOST}/api/server/getInfo`)
+const getServerInfo = () => fetch(`${HOST}api/server/getInfo`)
   .then(handleErrors)
   .then(res => res)
   .catch(err => {
