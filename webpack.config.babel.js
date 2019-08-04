@@ -5,7 +5,7 @@ import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import {
-  AUTH_CONFIG, BASE_NAME, ENV, HOST, IMAGES_PATH
+  BASE_NAME, ENV, HOST, IMAGES_PATH
 } from './config'
 
 const buildPath = path.join(__dirname, 'dist')
@@ -45,7 +45,6 @@ export default () => {
           ENV: JSON.stringify(ENV),
           HOST: JSON.stringify(HOST),
           IMAGES_PATH: JSON.stringify(IMAGES_PATH),
-          AUTH_CONFIG: JSON.stringify(AUTH_CONFIG),
         }
       }),
 

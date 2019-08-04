@@ -23,8 +23,8 @@ const Router = () => (
           key={key}
           exact={exact}
           render={
-            ({ location }) => (
-              layout ? <Layout Comp={Comp} /> : <Comp location={location} />
+            () => (
+              layout ? <Layout Comp={Comp} /> : <Comp />
             )
           }
         />

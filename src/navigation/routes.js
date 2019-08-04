@@ -1,7 +1,5 @@
 import About from '../screens/About'
-import Callback from '../screens/Callback'
 import Home from '../screens/Home'
-import Profile from '../screens/Profile'
 
 const routes = [
   {
@@ -17,19 +15,6 @@ const routes = [
     key: 'about',
     exact: true,
     layout: true,
-  },
-  {
-    path: '/user/profile',
-    Comp: Profile,
-    key: 'profile',
-    exact: true,
-    layout: true,
-  },
-  {
-    path: '/auth/callback',
-    Comp: Callback,
-    key: 'callback',
-    exact: true,
   },
 ]
 
