@@ -5,19 +5,13 @@ import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import {
-  BASE_URL, HOST, IMAGES_URL, NODE_ENV, PORT,
-  AUTH_CLIENT_ID, AUTH_DOMAIN, AUTH_RESPONSE_TYPE, AUTH_REDIRECT_URI, AUTH_SCOPE
+  AUTH_CONFIG, BASE_NAME, ENV, HOST, IMAGES_PATH
 } from './config'
 
 const buildPath = path.join(__dirname, 'dist')
 const sourcePath = path.join(__dirname, 'src')
 
-const mode = NODE_ENV
-
-const templateParameters = {
-  imagesUrl: IMAGES_URL,
-  includeAuth: !!AUTH_CLIENT_ID
-}
+const mode = ENV
 
 export default () => {
   const isDev = mode === 'development'
@@ -33,7 +27,7 @@ export default () => {
     node: { fs: 'empty' },
     output: {
       path: buildPath,
-      publicPath: `${BASE_URL}`,
+      publicPath: `${BASE_NAME}`,
       filename: path.join('js', 'bundle.js')
     },
     devServer: isDev ? {
@@ -42,22 +36,16 @@ export default () => {
       hot: true
     } : {},
     plugins: [
-      new webpack.HotModuleReplacementPlugin(),
+      isDev ? new webpack.HotModuleReplacementPlugin() : {},
 
       // webpack.DefinePlugin: Creates global constants which are configured at compile time.
       new webpack.DefinePlugin({
         'process.env': {
-          BASE_URL: JSON.stringify(BASE_URL),
-          ENV: JSON.stringify(NODE_ENV),
+          BASE_NAME: JSON.stringify(BASE_NAME),
+          ENV: JSON.stringify(ENV),
           HOST: JSON.stringify(HOST),
-          IMAGES_URL: JSON.stringify(IMAGES_URL),
-          PORT: JSON.stringify(PORT),
-
-          AUTH_CLIENT_ID: JSON.stringify(AUTH_CLIENT_ID),
-          AUTH_DOMAIN: JSON.stringify(AUTH_DOMAIN),
-          AUTH_RESPONSE_TYPE: JSON.stringify(AUTH_RESPONSE_TYPE),
-          AUTH_REDIRECT_URI: JSON.stringify(AUTH_REDIRECT_URI),
-          AUTH_SCOPE: JSON.stringify(AUTH_SCOPE),
+          IMAGES_PATH: JSON.stringify(IMAGES_PATH),
+          AUTH_CONFIG: JSON.stringify(AUTH_CONFIG),
         }
       }),
 
@@ -75,8 +63,8 @@ export default () => {
       new HtmlWebpackPlugin({
         filename: 'index.html',
         hash: !isDev,
+        imagesPath: `${HOST}${IMAGES_PATH}`,
         template: path.join(sourcePath, 'templates', 'index.pug'),
-        ...templateParameters
       }),
 
       new HtmlWebpackPugPlugin(),
@@ -86,10 +74,6 @@ export default () => {
         {
           from: path.join(sourcePath, 'assets'),
           to: path.join(buildPath)
-        },
-        {
-          from: path.join(__dirname, 'node_modules', 'auth0-js', 'build', 'auth0.js'),
-          to: path.join(buildPath, 'js', 'auth0.js')
         },
       ])
     ],
