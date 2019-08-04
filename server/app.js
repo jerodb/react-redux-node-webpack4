@@ -56,6 +56,7 @@ app.use((err, req, res, next) => {
     info = err.stack
   }
 
+  // eslint-disable-next-line no-console
   console.log('err: ', err)
 
   res.status(status)
