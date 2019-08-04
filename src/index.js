@@ -1,15 +1,16 @@
-import '@babel/polyfill'
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
+
 import React, { useEffect } from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import { hydrate } from 'react-dom'
 import { ThemeProvider } from '@material-ui/styles'
 import Router from './navigation/Router'
-import Auth from './components/Auth'
 import theme from './res/theme'
 import configureStore from './store'
 
-const { AUTH_CLIENT_ID, BASE_URL, NODE_ENV } = process.env
+const { BASE_NAME, ENV } = process.env
 
 const App = () => {
   useEffect(() => {
@@ -33,9 +34,8 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <BrowserRouter basename={BASE_URL}>
+      <BrowserRouter basename={BASE_NAME}>
         <ThemeProvider theme={theme}>
-          { AUTH_CLIENT_ID && <Auth /> }
           <Router />
         </ThemeProvider>
       </BrowserRouter>
@@ -46,4 +46,4 @@ const App = () => {
 hydrate(<App />, document.getElementById('app'))
 
 // https://webpack.js.org/api/hot-module-replacement/
-if (NODE_ENV === 'development') module.hot.accept()
+if (ENV === 'development') module.hot.accept()
