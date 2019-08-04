@@ -1,2 +1,2 @@
-export const USER_CLEAR = 'USER_CLEAR'
-export const USER_SET = 'USER_SET'
+export const SERVER_INFO_IS_FETCHING = 'SERVER_INFO_IS_FETCHING'
+export const SERVER_INFO_SET = 'SERVER_INFO_SET'
