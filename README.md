@@ -3,7 +3,6 @@
 - SSR ready.
 - **[MaterialUI](https://material-ui.com/getting-started/usage/)** v.4 integrated. (Material UI styles included when SSR)
 - Using **[pug](https://pugjs.org/api/getting-started.html)** for templates.
-- **[Auth0](https://auth0.com/docs)** authentication. **(optional)**
   
 &nbsp;
 ## Getting started
@@ -54,21 +53,6 @@ $ yarn start:prod
 $ yarn dev
 ```
   
-&nbsp;
-## Include Auth0 authentication
-
-- Add to .env file:
-
-```
-AUTH_CLIENT_ID=
-AUTH_DOMAIN=
-AUTH_RESPONSE_TYPE=
-AUTH_REDIRECT_URI=
-AUTH_SCOPE=
-```
-  
-A built-in LoginControl component will be shown on the Home screen.
-
 &nbsp;
 ## TO DO
 - remove harcoded paths in server
