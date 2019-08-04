@@ -28,7 +28,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // define the folders that will be used for static content.
 app.use(express.static(path.join(__dirname, '..', 'dist', 'root')))
-app.use('/css', express.static(path.join(__dirname, '..', 'dist', 'css')))
 app.use('/images', express.static(path.join(__dirname, '..', 'dist', 'images')))
 app.use('/js', express.static(path.join(__dirname, '..', 'dist', 'js')))
 
