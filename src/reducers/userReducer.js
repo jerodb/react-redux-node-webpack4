@@ -5,7 +5,6 @@ const initialState = {
   email: '',
   emailVerified: false,
   expiresAt: 0,
-  isLoggedIn: localStorage.getItem('isLoggedIn') === 'true',
   idToken: '',
   picture: '',
   userId: '',
@@ -17,7 +16,6 @@ export const user = (state = initialState, action) => {
     case USER_CLEAR:
       return {
         ...initialState,
-        isLoggedIn: false
       }
     case USER_SET:
       return {
@@ -27,7 +25,6 @@ export const user = (state = initialState, action) => {
         emailVerified: action.emailVerified,
         expiresAt: action.expiresAt,
         idToken: action.idToken,
-        isLoggedIn: true,
         picture: action.picture,
         userId: action.userId,
         userName: action.userName

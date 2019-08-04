@@ -2,9 +2,8 @@
 // IMAGE RESOURCES
 // *******************
 // All image resources that will be used in the app must be set here.
+const { HOST, IMAGES_PATH } = process.env
 
-const { IMAGES_URL } = process.env
-const url = IMAGES_URL
+const url = `${HOST}${IMAGES_PATH}`
 
-export const loading = `${url}loading.svg`
 export const logo = `${url}logo.svg`

@@ -3,14 +3,14 @@
 doctype html
 html(lang='en')
   head
-    include includes/commonMetasLinks
+    include includes/metas-links
 
     title Title Me
 
-    // material-UI styles are inserted here when SSR
+    // App styles are inserted here when SSR
     style(id='jss-server-side')
   body
     #app
 
-    if includeAuth
-      include includes/auth
+    // App initial state is inserted here when SSR
+    script(id='initial-state')
