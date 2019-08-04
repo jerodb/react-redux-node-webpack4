@@ -1,4 +1,4 @@
-# React-Redux-Node-Webpack4
+# React Redux Node Webpack4
 
 - SSR ready.
 - **[MaterialUI](https://material-ui.com/getting-started/usage/)** v.4 integrated. (Material UI styles included when SSR)
@@ -11,7 +11,7 @@
 - Create .env file with the following variables:
 
 ```
-  BASE_URL=
+  BASE_NAME=
   HOST=
   NODE_ENV=
   PORT=
@@ -20,8 +20,8 @@
 If you omit the .env file the app will start with this default:
   
 ```
-  BASE_URL=/
-  HOST=http://localhost:3000
+  BASE_NAME=/
+  HOST=http://localhost:3000/
   NODE_ENV=development
   PORT=3000
 ```
@@ -71,9 +71,7 @@ A built-in LoginControl component will be shown on the Home screen.
 
 &nbsp;
 ## TO DO
-- use FETCH for fetching
 - remove harcoded paths in server
-- refactor to type script
 - Add multilanguage
 - Add testing
 
