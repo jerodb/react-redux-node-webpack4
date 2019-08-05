@@ -47,7 +47,7 @@ $ yarn build
 $ yarn start
 ```
 
-- Start **[dev-server](https://github.com/webpack/webpack-dev-server)** with HR:
+- Start **[dev-server](https://webpack.js.org/configuration/dev-server)** with **[HMR](https://webpack.js.org/concepts/hot-module-replacement/)**:
 
 ```
 $ yarn dev
