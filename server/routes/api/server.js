@@ -20,7 +20,7 @@ const getServerInfo = (req, res) => {
     },
     {
       name: 'memory',
-      value: os.totalmem(),
+      value: `${Math.round((os.totalmem() / (1024 ** 3)))} GB`,
     }
   ]
 
