@@ -13,8 +13,8 @@ const HomeComponent = ({
       <Button className={classes.button} onClick={onClick}>Fetch Server Info</Button>
       {data && (
         <ul className={classes.info}>
-          { data.map(d => (
-            <li>
+          { data.map((d, k) => (
+            <li key={JSON.stringify(k)}>
               <b>{`${d.name}: `}</b>
               {d.value}
             </li>
