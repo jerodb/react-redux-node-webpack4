@@ -47,7 +47,7 @@ $ yarn start:dev
 $ yarn start:prod
 ```
 
-- Start dev-server with HR:
+- Start **[dev-server](https://github.com/webpack/webpack-dev-server)** with HR:
 
 ```
 $ yarn dev
@@ -55,7 +55,8 @@ $ yarn dev
   
 &nbsp;
 ## TO DO
-- remove harcoded paths in server
+- Reduce bundle size
+- Remove harcoded paths in server
 - Add multilanguage
 - Add testing
 
