@@ -1,7 +1,6 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 import http from 'http'
-// import fs from 'fs'
 import app from './app'
 
 const { NODE_ENV, PORT } = process.env
@@ -13,12 +12,10 @@ const server = new http.Server(app)
 /*
 const certificate = fs.readFileSync('chained.pem')
 const privateKey = fs.readFileSync('domain.key')
-
 const opt = {
   cert: certificate,
   key: privateKey,
 }
-
 const server = https.createServer(opt, app)
 */
 
