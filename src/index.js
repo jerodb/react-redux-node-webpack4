@@ -8,29 +8,24 @@ import { hydrate } from 'react-dom'
 import { ThemeProvider } from '@material-ui/styles'
 import Router from './navigation/Router'
 import theme from './res/theme'
-import configureStore from './store'
+import initStore from './store'
 
 const { BASE_NAME, ENV } = process.env
 
 const App = () => {
   useEffect(() => {
-    const jssStyles = document.getElementById('jss-server-side')
+    const jssStyles = document.getElementById('ssr-styles')
+    const initialState = document.getElementById('ssr-state')
 
-    if (jssStyles) {
-      jssStyles.parentNode.removeChild(jssStyles)
-    }
+    if (jssStyles) jssStyles.parentNode.removeChild(jssStyles)
+    if (initialState) initialState.parentNode.removeChild(initialState)
   }, [])
 
-  const { store } = configureStore()
-
-  // Grab the state from a global variable injected into the server-generated HTML
-  // const preloadedState = window.__PRELOADED_STATE__
-
-  // Allow the passed state to be garbage-collected
-  // delete window.__PRELOADED_STATE__
+  // Grab the initial state from SSR generated global variable
+  const preloadedState = window.INITIAL_STATE
 
   // Create Redux store with initial state
-  // const store = createStore(counterApp, preloadedState)
+  const store = initStore(preloadedState)
 
   return (
     <Provider store={store}>

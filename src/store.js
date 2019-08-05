@@ -14,7 +14,8 @@ if (DEV) {
   middleware.push(loggerMiddleware)
 }
 
-const store = createStore(rootReducer, applyMiddleware(...middleware))
-const configureStore = () => ({ store })
+const initStore = (initialState = undefined) => (
+  createStore(rootReducer, initialState, applyMiddleware(...middleware))
+)
 
-export default configureStore
+export default initStore
