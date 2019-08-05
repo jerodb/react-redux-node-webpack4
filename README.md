@@ -56,7 +56,6 @@ $ yarn dev
 &nbsp;
 ## TO DO
 - Reduce bundle size
-- Remove harcoded paths in server
 - Add multilanguage
 - Add testing
 
