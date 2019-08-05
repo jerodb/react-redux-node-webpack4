@@ -27,7 +27,7 @@ If you omit the .env file the app will start with this default:
   
 &nbsp;
 ## Install, build and run:
-*Environment mode should be set on **.env** file under **NODE_ENV** value.*  
+*(*) Environment should be set on **.env** file under **NODE_ENV** value.*  
 
 - Install dependencies:
 
