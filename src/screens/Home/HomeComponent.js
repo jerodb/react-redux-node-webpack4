@@ -1,24 +1,32 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Button from '@material-ui/core/Button'
-import { getServerInfo } from '../../services'
-
+import CircularProgress from '@material-ui/core/CircularProgress'
 import styles from './styles'
 
-const HomeComponent = () => {
-  const [message, setMessage] = useState('')
-
+const HomeComponent = ({
+  data, error, isFetching, onClick
+}) => {
   const classes = styles()
-
-  const onButtonClick = async () => {
-    const serverInfo = await getServerInfo()
-
-    return setMessage(serverInfo)
-  }
 
   return (
     <div className={classes.home}>
-      <Button className={classes.button} onClick={onButtonClick}>Fetch Server Info</Button>
-      {message && <div className={classes.message}>{message}</div>}
+      <Button className={classes.button} onClick={onClick}>Fetch Server Info</Button>
+      {data && (
+        <ul className={classes.info}>
+          { data.map(d => (
+            <li>
+              <b>{`${d.name}: `}</b>
+              {d.value}
+            </li>
+          ))}
+        </ul>
+      )}
+      {error && <div className={classes.error}>{error}</div>}
+      {isFetching && (
+        <div className={classes.spinnerContainer}>
+          <CircularProgress className={classes.spinner} />
+        </div>
+      )}
     </div>
   )
 }
