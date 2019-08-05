@@ -1,8 +1,6 @@
 const { HOST } = process.env
 
 const handleErrors = response => {
-  console.log('fetch response: ', response)
-
   if (!response.ok) {
     throw Error(response.statusText)
   }
