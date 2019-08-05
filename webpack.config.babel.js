@@ -93,17 +93,20 @@ const plugins = [
 const rules = [
   {
     test: /\.pug/,
+    // https://github.com/pugjs/pug-loader
     use: ['pug-loader']
   },
   {
     test: /\.(jsx|js)?$/,
     exclude: /node_modules/,
+    // https://github.com/babel/babel-loader
     use: ['babel-loader']
   },
   {
     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
     use: [
       {
+        // https://github.com/webpack-contrib/url-loader
         loader: 'url-loader',
         options: {
           limit: 10000,
@@ -117,6 +120,7 @@ const rules = [
     test: /\.(jpe?g|png|gif|ico)$/i,
     use: [
       {
+        // https://github.com/webpack-contrib/file-loader
         loader: 'file-loader',
         options: {
           name: '[name].[ext]'
