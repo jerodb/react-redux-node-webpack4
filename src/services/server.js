@@ -9,12 +9,13 @@ const handleErrors = response => {
   return response.json()
 }
 
-const getServerInfo = () => fetch(`${HOST}api/server/getInfo`)
+const getInfo = () => fetch(`${HOST}api/server/info`)
   .then(handleErrors)
   .then(res => res)
   .catch(err => {
-    console.log('getServerInfo Error: ', err)
-    return 'Something went wrong. See the console for more information.'
+    // eslint-disable-next-line no-console
+    console.log('Fetch Server Info Error: ', err)
+    return { error: 'Something went wrong. See the console for more information.' }
   })
 
-export default getServerInfo
+export default { getInfo }
