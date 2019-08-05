@@ -1,5 +1,6 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
+import 'whatwg-fetch'
 
 import React, { useEffect } from 'react'
 import { Provider } from 'react-redux'
