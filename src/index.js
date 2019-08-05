@@ -10,7 +10,7 @@ import Router from './navigation/Router'
 import theme from './res/theme'
 import initStore from './store'
 
-const { BASE_NAME, NODE_ENV } = process.env
+const { BASE_NAME } = process.env
 
 const App = () => {
   useEffect(() => {
@@ -41,4 +41,4 @@ const App = () => {
 hydrate(<App />, document.getElementById('app'))
 
 // https://webpack.js.org/api/hot-module-replacement/
-if (NODE_ENV === 'development') module.hot.accept()
+if (module.hot) module.hot.accept()
