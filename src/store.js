@@ -3,14 +3,15 @@ import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import rootReducer from './reducers'
 
+const { NODE_ENV } = process.env
+
 const loggerMiddleware = createLogger()
 
 const middleware = []
-const DEV = true
 
 middleware.push(thunkMiddleware)
 
-if (DEV) {
+if (NODE_ENV === 'development') {
   middleware.push(loggerMiddleware)
 }
 
