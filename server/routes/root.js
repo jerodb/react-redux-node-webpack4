@@ -8,6 +8,10 @@ import path from 'path'
 import Router from '../../src/navigation/Router'
 import initStore from '../../src/store'
 import theme from '../../src/res/theme'
+import { ROOT_DIR } from '../../config'
+
+const rootDir = ROOT_DIR
+const template = path.join(rootDir, 'index.html')
 
 export default (req, res) => {
   // Create a sheetsManager instance.
@@ -34,8 +38,6 @@ export default (req, res) => {
 
   // Grab the CSS from sheets.
   const styles = sheets.toString()
-
-  const template = path.join(__dirname, '..', '..', 'dist', 'index.html')
 
   // Loads template
   fs.readFile(template, 'utf8', (err, data) => {

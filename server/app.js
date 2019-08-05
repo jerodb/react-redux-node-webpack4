@@ -5,6 +5,9 @@ import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import path from 'path'
 import routes from './routes'
+import { ROOT_DIR } from '../config'
+
+const rootDir = ROOT_DIR
 
 // Init express app
 const app = express()
@@ -27,9 +30,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // define the folders that will be used for static content.
-app.use(express.static(path.join(__dirname, '..', 'dist', 'root')))
-app.use('/images', express.static(path.join(__dirname, '..', 'dist', 'images')))
-app.use('/js', express.static(path.join(__dirname, '..', 'dist', 'js')))
+app.use(express.static(path.join(rootDir, 'root')))
+app.use('/images', express.static(path.join(rootDir, 'images')))
+app.use('/js', express.static(path.join(rootDir, 'js')))
 
 // ==============================================================================
 // VIEW CONFIGURATION (No need to use a view engine. Serving plain html.)

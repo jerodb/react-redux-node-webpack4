@@ -5,7 +5,7 @@ import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import {
-  BASE_NAME, HOST, IMAGES_PATH, NODE_ENV, PORT
+  BASE_NAME, HOST, IMAGES_PATH, NODE_ENV, PORT, ROOT_DIR
 } from './config'
 
 export default () => ({
@@ -38,7 +38,7 @@ export default () => ({
   },
 })
 
-const buildPath = path.join(__dirname, 'dist')
+const buildPath = ROOT_DIR
 const sourcePath = path.join(__dirname, 'src')
 const assets = path.join(sourcePath, 'assets')
 const entryPoint = path.join(sourcePath, 'index.js')
