@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "yarn pre-build && webpack",
-    "dev": "webpack-dev-server --config ./webpack.config.babel.js",
+    "dev": "webpack-dev-server --config ./webpack.config.babel.js --hot",
     "pre-build": "if [ -d \"dist\" ]; then rm -R dist; fi && mkdir dist",
     "start": "node -r dotenv/config -r @babel/register ./server"
   },
