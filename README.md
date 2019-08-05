@@ -27,6 +27,7 @@ If you omit the .env file the app will start with this default:
   
 &nbsp;
 ## Install, build and run:
+*Environment mode should be set on **.env** file under **NODE_ENV** value.*  
 
 - Install dependencies:
 
@@ -34,17 +35,16 @@ If you omit the .env file the app will start with this default:
 $ yarn
 ```
 
-- Build *(webpack mode depends on **NODE_ENV** value set on **.env** file)*:
+- Bundle app using webpack:
 
 ```
 $ yarn build
 ```
 
-- Start server:
+- Start node server:
 
 ```
-$ yarn start:dev
-$ yarn start:prod
+$ yarn start
 ```
 
 - Start **[dev-server](https://github.com/webpack/webpack-dev-server)** with HR:
