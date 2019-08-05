@@ -60,14 +60,6 @@ const plugins = [
     }
   }),
 
-  /*
-  // https://webpack.js.org/plugins/provide-plugin/
-  new webpack.ProvidePlugin({
-    Promise: 'es6-promise',
-    fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
-  }),
-  */
-
   // https://webpack.js.org/plugins/html-webpack-plugin/
   // Generate an .html file that includes webpack bundles in the body.
   new HtmlWebpackPlugin({
