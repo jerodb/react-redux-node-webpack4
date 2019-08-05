@@ -5,42 +5,52 @@ import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import {
-  BASE_NAME, HOST, IMAGES_PATH, NODE_ENV
+  BASE_NAME, HOST, IMAGES_PATH, NODE_ENV, PORT
 } from './config'
 
-const buildPath = path.join(__dirname, 'dist')
-const sourcePath = path.join(__dirname, 'src')
-const entryPoint = path.join(sourcePath, 'index')
-const outputBundle = path.join('js', 'bundle.js')
-
-const mode = NODE_ENV
-const isDev = mode === 'development'
-
 export default () => ({
-  resolve: { extensions: ['*', '.js', '.jsx', '.json'] },
+  // https://webpack.js.org/configuration/mode/
   mode,
+  // https://webpack.js.org/configuration/devtool/
   devtool: isDev ? 'eval-source-map' : 'source-map',
+  // https://webpack.js.org/configuration/entry-context/#entry
   entry: entryPoint,
-  target: 'web',
-  node: { fs: 'empty' },
+  resolve: {
+    // https://webpack.js.org/configuration/resolve/#resolveextensions
+    extensions: ['.js', '.jsx', '.json']
+  },
+  // https://webpack.js.org/configuration/output/
   output: {
     filename: outputBundle,
     path: buildPath,
     publicPath: `${BASE_NAME}`,
   },
-  devServer: isDev ? {
-    contentBase: buildPath,
-    hot: true,
-    port: 3000,
-  } : {},
+  // https://webpack.js.org/configuration/plugins/
   plugins,
-  module: { rules },
+  module: {
+    // https://webpack.js.org/configuration/module/#modulerules
+    rules
+  },
+  // https://webpack.js.org/configuration/dev-server/
+  devServer: {
+    contentBase: buildPath,
+    port: PORT,
+  },
 })
 
-const plugins = [
-  isDev ? new webpack.HotModuleReplacementPlugin() : {},
+const buildPath = path.join(__dirname, 'dist')
+const sourcePath = path.join(__dirname, 'src')
+const assets = path.join(sourcePath, 'assets')
+const entryPoint = path.join(sourcePath, 'index.js')
+const outputBundle = path.join('js', 'bundle.js')
+const template = path.join(sourcePath, 'templates', 'index.pug')
 
-  // webpack.DefinePlugin: Creates global constants which are configured at compile time.
+const mode = NODE_ENV
+const isDev = mode === 'development'
+
+const plugins = [
+  // https://webpack.js.org/plugins/define-plugin/
+  // Create global constants which are configured at compile time.
   new webpack.DefinePlugin({
     'process.env': {
       BASE_NAME: JSON.stringify(BASE_NAME),
@@ -51,30 +61,31 @@ const plugins = [
   }),
 
   /*
+  // https://webpack.js.org/plugins/provide-plugin/
   new webpack.ProvidePlugin({
     Promise: 'es6-promise',
     fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
   }),
   */
 
-  /*
-  * Generate a .html file that includes
-  * all webpack bundles in the body using script tags and styles using link tags.
-  */
+  // https://webpack.js.org/plugins/html-webpack-plugin/
+  // Generate an .html file that includes webpack bundles in the body.
   new HtmlWebpackPlugin({
-    filename: 'index.html',
-    hash: !isDev,
+    filename: 'index.html', // output template
+    hash: !isDev, // automagically hashes bundles
     imagesPath: `${HOST}${IMAGES_PATH}`,
-    template: path.join(sourcePath, 'templates', 'index.pug'),
+    template, // original template
   }),
 
+  // https://www.npmjs.com/package/html-webpack-pug-plugin
   new HtmlWebpackPugPlugin(),
 
-  // CopyWebpackPlugin: copy files or dirs from one location to another.
+  // https://webpack.js.org/plugins/copy-webpack-plugin/
+  // Copy files and dirs from one location to another.
   new CopyWebpackPlugin([
     {
-      from: path.join(sourcePath, 'assets'),
-      to: path.join(buildPath)
+      from: assets,
+      to: buildPath
     },
   ])
 ]
