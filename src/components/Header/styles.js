@@ -3,9 +3,7 @@ import { logo } from '../../res/images'
 
 const styles = makeStyles(theme => ({
   container: {
-    display: 'flex',
-    height: 86,
-    padding: '8px 16px',
+    ...theme.mainContainer,
   },
   grow: {
     flexGrow: 1,
@@ -25,20 +23,53 @@ const styles = makeStyles(theme => ({
       width: 63,
     },
   },
+  menuItem: {
+    padding: 0,
+  },
+  menuWrapper: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
   nav: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    listStylePosition: 'outside',
-    listStyleType: 'none',
+    paddingLeft: 32,
   },
   navBar: {
     display: 'flex',
     width: '100%',
   },
   navBtn: {
-    fontSize: '1.3em',
+    color: '#444444',
+    fontSize: '1.1em',
     fontWeight: '500',
+    paddingBottom: 8,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 8,
+    textDecoration: 'none',
+    width: '100%',
+    '&:hover': {
+      color: '#222222',
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1.3em',
+      paddingLeft: 8,
+      paddingRight: 8,
+      width: 'auto',
+      '&:hover': {
+        textDecoration: 'underline',
+      },
+    },
+  },
+  popupMenu: {
+    backgorundColor: '#FFFFFF',
+    minWidth: 120,
+    '& li': {
+      padding: 0,
+    },
   },
   sectionDesktop: {
     display: 'none',
