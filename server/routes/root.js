@@ -5,6 +5,7 @@ import { StaticRouter } from 'react-router-dom'
 import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles'
 import fs from 'fs'
 import path from 'path'
+import minifyCssString from 'minify-css-string'
 import Router from '../../src/navigation/Router'
 import initStore from '../../src/store'
 import theme from '../../src/res/theme'
@@ -37,7 +38,7 @@ export default (req, res) => {
   )
 
   // Grab the CSS from sheets.
-  const styles = sheets.toString()
+  const styles = minifyCssString(sheets.toString())
 
   // Loads template
   fs.readFile(template, 'utf8', (err, data) => {
