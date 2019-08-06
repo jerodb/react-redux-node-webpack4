@@ -1,8 +1,8 @@
 # React Redux Node Webpack4
 
 - SSR ready.
-- Usign **[MaterialUI](https://material-ui.com/getting-started/usage/)** v.4 in components and for styling. Styles are included when SSR.
-- Templates build using **[pug/jade](https://pugjs.org/api/getting-started.html)** template engine.
+- Usign **[MaterialUI](https://material-ui.com/getting-started/usage/)** v.4. MUI styles are included when SSR.
+- Templates built using **[pug/jade](https://pugjs.org/api/getting-started.html)** template engine.
   
 &nbsp;
 ## Getting started
