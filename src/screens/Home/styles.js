@@ -7,11 +7,15 @@ const styles = makeStyles(theme => ({
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     color: 'white',
-    height: 48,
+    fontSize: '.9em',
+    height: 40,
     marginBottom: 32,
-    padding: '0 30px',
+    padding: '0 20px',
     [theme.breakpoints.up('sm')]: {
+      fontSize: '1em',
+      height: 48,
       marginBottom: 48,
+      padding: '0 32px',
     },
   },
   error: {
