@@ -30,18 +30,18 @@ If you omit the .env file the app will start with this default:
 *(\*) Node and Webpack environment depends on **NODE_ENV** value set in **.env** file.*  
 
 - Install dependencies:  
-```bash
+```
 $ yarn
 ```
   
 - Bundle app using webpack and start node server:  
-```sh
+```
 $ yarn build
 $ yarn start
 ```
 
 - Start **[dev-server](https://webpack.js.org/configuration/dev-server)** with **[HMR](https://webpack.js.org/concepts/hot-module-replacement/)**:  
-```Shell
+```
 $ yarn dev
 ```
   
