@@ -1,13 +1,23 @@
 import { createMuiTheme } from '@material-ui/core/styles'
-import red from '@material-ui/core/colors/red'
+import createBreakpoints from '@material-ui/core/styles/createBreakpoints'
+
+const breakpoints = createBreakpoints({})
 
 // Create theme instance.
 const theme = createMuiTheme({
-  mainPadding: {
-    paddingBottom: 30,
+  mainContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    margin: '0 auto',
+    maxWidth: 1024,
     paddingLeft: 16,
     paddingRight: 16,
-    paddingTop: 30,
+    width: '100%',
+    [breakpoints.up('sm')]: {
+      paddingLeft: 24,
+      paddingRight: 24,
+    },
   },
   overrides: {
     MuiList: {
@@ -19,17 +29,17 @@ const theme = createMuiTheme({
   },
   palette: {
     primary: {
-      main: '#ffffff',
-      color: '#24292e',
+      main: '#FFFFFF',
+      color: '#24292E',
     },
     secondary: {
-      main: '#19857b',
+      main: '#19857B',
     },
     error: {
-      main: red.A400,
+      main: '#00FFFF',
     },
     background: {
-      default: '#fff',
+      default: '#FFFFFF',
     },
   },
 })
