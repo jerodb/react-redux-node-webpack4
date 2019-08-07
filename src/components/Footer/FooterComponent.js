@@ -12,7 +12,13 @@ const Footer = () => {
           {`Currently v.${version}. Released under the`}
           &nbsp;
         </span>
-        <a href="https://github.com/jerodb/react-redux-node-webpack4/LICENCE">MIT License.</a>
+        <a
+          href="https://github.com/jerodb/react-redux-node-webpack4/blob/master/LICENCE"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          MIT License.
+        </a>
       </div>
     </div>
   )
