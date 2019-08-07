@@ -27,7 +27,7 @@ If you omit the .env file the app will start with this default:
   
 &nbsp;
 ## Install, build and run:
-*(\*) Node and Webpack environment depends on **NODE_ENV** value set in **.env** file.*  
+*(\*) Node environment and Webpack mode depends on **NODE_ENV** value set in **.env** file.*  
 
 - Install dependencies:  
 ```
