@@ -1,7 +1,8 @@
-// *******************
+// ****************
 // IMAGE RESOURCES
-// *******************
-// All image resources that will be used in the app must be set here.
+// ****************
+// All image resources should be defined here.
+
 const { HOST, IMAGES_PATH } = process.env
 
 const url = `${HOST}${IMAGES_PATH}`

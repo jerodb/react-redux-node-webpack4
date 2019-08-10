@@ -6,7 +6,7 @@ import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles'
 import fs from 'fs'
 import path from 'path'
 import minifyCssString from 'minify-css-string'
-import Router from '../../src/navigation/Router'
+import App from '../../src/App'
 import initStore from '../../src/store'
 import theme from '../../src/res/theme'
 import { ROOT_DIR } from '../../config'
@@ -30,7 +30,7 @@ export default (req, res) => {
       <Provider store={store}>
         <StaticRouter location={req.url} context={{}}>
           <ThemeProvider theme={theme}>
-            <Router />
+            <App />
           </ThemeProvider>
         </StaticRouter>
       </Provider>,

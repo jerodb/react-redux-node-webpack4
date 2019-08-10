@@ -1,6 +1,7 @@
 {
   "env": {
     "browser": true,
+    "jest": true,
     "node": true
   },
   "extends": "airbnb",
@@ -14,6 +15,7 @@
   "rules": {
     "arrow-parens": ["error", "as-needed"],
     "comma-dangle": 0,
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "import/prefer-default-export": "off",
     "max-len": "off",
     "no-use-before-define": "off",
