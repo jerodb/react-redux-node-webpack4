@@ -5,6 +5,15 @@ const breakpoints = createBreakpoints({})
 
 // Create theme instance.
 const theme = createMuiTheme({
+  '@global': {
+    body: {
+      fontSize: 14,
+      minWidth: 280,
+      [breakpoints.up('sm')]: {
+        fontSize: 15,
+      },
+    }
+  },
   mainContainer: {
     display: 'flex',
     flexDirection: 'row',
