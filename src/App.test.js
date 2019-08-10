@@ -11,7 +11,7 @@ describe('App Component', () => {
     shallow(<App />)
   })
 
-  it('Should include CssBaseline', () => {
+  it('Should include styles normalizations', () => {
     const wrapper = shallow(<App />)
     expect(wrapper.find('CssBaseline')).toHaveLength(1)
   })
