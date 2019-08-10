@@ -11,12 +11,10 @@ const middleware = []
 
 middleware.push(thunkMiddleware)
 
-if (NODE_ENV === 'development') {
-  middleware.push(loggerMiddleware)
-}
+if (NODE_ENV === 'development') middleware.push(loggerMiddleware)
 
-const initStore = (initialState = undefined) => (
+const configureStore = (initialState = undefined) => (
   createStore(rootReducer, initialState, applyMiddleware(...middleware))
 )
 
-export default initStore
+export default configureStore
