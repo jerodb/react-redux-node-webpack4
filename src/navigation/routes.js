@@ -7,14 +7,12 @@ const routes = [
     Comp: Home,
     key: 'home',
     exact: true,
-    layout: true,
   },
   {
     path: '/about',
     Comp: About,
     key: 'about',
     exact: true,
-    layout: true,
   },
 ]
 
