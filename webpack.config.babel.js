@@ -5,7 +5,7 @@ import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import {
-  BASE_NAME, HOST, IMAGES_PATH, NODE_ENV, PORT, ROOT_DIR
+  BASE_NAME, HOST, NODE_ENV, PORT, ROOT_DIR
 } from './config'
 
 export default () => ({
@@ -56,7 +56,6 @@ const plugins = [
       BASE_NAME: JSON.stringify(BASE_NAME),
       NODE_ENV: JSON.stringify(NODE_ENV),
       HOST: JSON.stringify(HOST),
-      IMAGES_PATH: JSON.stringify(IMAGES_PATH),
     }
   }),
 
@@ -65,7 +64,7 @@ const plugins = [
   new HtmlWebpackPlugin({
     filename: 'index.html', // output template
     hash: !isDev, // automagically hashes bundles
-    imagesPath: `${HOST}${IMAGES_PATH}`,
+    host: HOST,
     template, // original template
   }),
 
