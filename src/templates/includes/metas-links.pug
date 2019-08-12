@@ -1,5 +1,5 @@
-- var imagesPath = htmlWebpackPlugin.options.imagesPath
-- var iconsPath = `${imagesPath}icon/`
+- var host = htmlWebpackPlugin.options.host
+- var iconsPath = `${host}images/icon/`
 
 meta(http-equiv='content-type' content='text/html; charset=utf-8')
 meta(name="description", content="")
@@ -14,15 +14,15 @@ link(
   type="text/css"
 )
 
-link(rel="shortcut icon" type="image/x-icon" href=`${iconsPath}/favicon.ico`)
+link(rel="shortcut icon" type="image/x-icon" href=`${iconsPath}favicon.ico`)
 
-link(rel="apple-touch-icon" sizes="180x180" href=`${iconsPath}/apple-touch-icon.png`)
-link(rel="icon" type="image/png" sizes="32x32" href=`${iconsPath}/favicon-32x32.png`)
-link(rel="icon" type="image/png" sizes="16x16" href=`${iconsPath}/favicon-16x16.png`)
-link(rel="manifest" href=`${iconsPath}/site.webmanifest`)
-link(rel="mask-icon" href=`${iconsPath}/safari-pinned-tab.svg` color="#5bbad5")
+link(rel="apple-touch-icon" sizes="180x180" href=`${iconsPath}apple-touch-icon.png`)
+link(rel="icon" type="image/png" sizes="32x32" href=`${iconsPath}favicon-32x32.png`)
+link(rel="icon" type="image/png" sizes="16x16" href=`${iconsPath}favicon-16x16.png`)
+link(rel="manifest" href=`${iconsPath}site.webmanifest`)
+link(rel="mask-icon" href=`${iconsPath}safari-pinned-tab.svg` color="#5bbad5")
 meta(name="msapplication-TileColor", content="#da532c")
-meta(name="msapplication-config" content=`${iconsPath}/browserconfig.xml`)
+meta(name="msapplication-config" content=`${iconsPath}browserconfig.xml`)
 meta(name="theme-color" content="#ffffff")
 
 

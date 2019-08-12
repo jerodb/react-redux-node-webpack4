@@ -2,7 +2,7 @@
 
 - SSR ready.
 - Testing with **[Jest](https://jestjs.io/)** and **[Enzyme](https://airbnb.io/enzyme/)**.
-- Usign **[MaterialUI](https://material-ui.com/getting-started/usage/)** v.4. MUI styles are included when SSR.
+- Usign **[MaterialUI](https://material-ui.com/getting-started/usage/)** v.4. (MUI styles are included when SSR)
 - Templates built using **[pug/jade](https://pugjs.org/api/getting-started.html)** template engine.
   
 &nbsp;
@@ -51,8 +51,3 @@ $ yarn dev
 $ yarn test
 ```
   
-&nbsp;
-## TO DO
-- Reduce bundle size
-- Add multilanguage
-

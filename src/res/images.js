@@ -3,8 +3,8 @@
 // ****************
 // All image resources should be defined here.
 
-const { HOST, IMAGES_PATH } = process.env
+const { HOST } = process.env
 
-const url = `${HOST}${IMAGES_PATH}`
+const url = `${HOST}images/`
 
 export const logo = `${url}logo.svg`
