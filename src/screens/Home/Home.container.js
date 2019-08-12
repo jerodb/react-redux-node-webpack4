@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Home from './HomeComponent'
+import Home from './Home.component'
 import { getServerInfo, setServerInfo, showError } from '../../actions/serverInfoActions'
 import { server } from '../../services'
 
