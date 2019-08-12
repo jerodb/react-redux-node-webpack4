@@ -7,7 +7,7 @@ const handleErrors = response => {
   return response.json()
 }
 
-const getInfo = () => fetch(`${HOST}api/server/info`)
+const getServerInfo = () => fetch(`${HOST}api/server/info`)
   .then(handleErrors)
   .then(res => res)
   .catch(err => {
@@ -16,4 +16,4 @@ const getInfo = () => fetch(`${HOST}api/server/info`)
     return { error: 'Something went wrong. See the console for more information.' }
   })
 
-export default { getInfo }
+export default getServerInfo

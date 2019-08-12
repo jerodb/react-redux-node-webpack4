@@ -1,3 +1,3 @@
-import server from './server'
+import getServerInfo from './getServerInfo'
 
-export { server }
+export { getServerInfo }

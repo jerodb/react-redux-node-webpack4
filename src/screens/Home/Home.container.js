@@ -2,14 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Home from './Home.component'
 import { getServerInfo, setServerInfo, showError } from '../../actions/serverInfoActions'
-import { server } from '../../services'
+import { getServerInfo as getInfo } from '../../services'
 
 function HomeContainer({
   data, error, isFetching, onGetServerInfo, onSetServerInfo, onShowError
 }) {
   const onClick = async () => {
     onGetServerInfo()
-    const serverInfo = await server.getInfo()
+    const serverInfo = await getInfo()
 
     if (serverInfo && serverInfo.error) onShowError(serverInfo.error)
     else onSetServerInfo(serverInfo)
