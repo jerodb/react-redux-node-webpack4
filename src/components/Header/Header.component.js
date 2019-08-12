@@ -8,22 +8,23 @@ import MenuIcon from '@material-ui/icons/Menu'
 import { Link } from 'react-router-dom'
 import styles from './Header.styles'
 
-const classes = styles()
-
 const HeaderComponent = ({
   anchorEl, handleClose, handleMenu, menuList, open
-}) => (
-  <AppBar position="static">
-    <Toolbar className={classes.container}>
-      <Link
-        className={classes.logoWrapper}
-        to="/"
-      >
-        <div className={classes.logo} />
-      </Link>
-      <div className={classes.sectionDesktop}>
-        <div className={classes.nav}>
-          {
+}) => {
+  const classes = styles()
+
+  return (
+    <AppBar position="static">
+      <Toolbar className={classes.container}>
+        <Link
+          className={classes.logoWrapper}
+          to="/"
+        >
+          <div className={classes.logo} />
+        </Link>
+        <div className={classes.sectionDesktop}>
+          <div className={classes.nav}>
+            {
             menuList.map((el, index) => (
               <Link
                 className={classes.navBtn}
@@ -34,39 +35,39 @@ const HeaderComponent = ({
               </Link>
             ))
           }
+          </div>
         </div>
-      </div>
-      <div className={classes.grow} />
-      <div className={classes.sectionMobile}>
-        <IconButton
-          aria-label="open menu"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          className={classes.menuButton}
-          color="inherit"
-          edge="end"
-          onClick={handleMenu}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Menu
-          id="menu-appbar"
-          anchorEl={anchorEl}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-          }}
-          className={classes.menuWrapper}
-          keepMounted
-          onClose={handleClose}
-          open={open}
-          transformOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-          }}
-        >
-          <div className={classes.popupMenu}>
-            {
+        <div className={classes.grow} />
+        <div className={classes.sectionMobile}>
+          <IconButton
+            aria-label="open menu"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            className={classes.menuButton}
+            color="inherit"
+            edge="end"
+            onClick={handleMenu}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+            }}
+            className={classes.menuWrapper}
+            keepMounted
+            onClose={handleClose}
+            open={open}
+            transformOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+            }}
+          >
+            <div className={classes.popupMenu}>
+              {
               menuList.map((el, index) => (
                 <MenuItem className={classes.menuItem} key={JSON.stringify(index)}>
                   <Link
@@ -78,11 +79,12 @@ const HeaderComponent = ({
                 </MenuItem>
               ))
             }
-          </div>
-        </Menu>
-      </div>
-    </Toolbar>
-  </AppBar>
-)
+            </div>
+          </Menu>
+        </div>
+      </Toolbar>
+    </AppBar>
+  )
+}
 
 export default HeaderComponent

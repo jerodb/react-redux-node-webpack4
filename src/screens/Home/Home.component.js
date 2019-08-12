@@ -3,14 +3,15 @@ import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import styles from './Home.styles'
 
-const classes = styles()
-
 const HomeComponent = ({
   data, error, isFetching, onClick
-}) => (
-  <div className={classes.home}>
-    <Button className={classes.button} onClick={onClick}>Fetch Server Info</Button>
-    {data && (
+}) => {
+  const classes = styles()
+
+  return (
+    <div className={classes.home}>
+      <Button className={classes.button} onClick={onClick}>Fetch Server Info</Button>
+      {data && (
       <ul className={classes.info}>
         { data.map((d, k) => (
           <li key={JSON.stringify(k)}>
@@ -19,14 +20,14 @@ const HomeComponent = ({
           </li>
         ))}
       </ul>
-    )}
-    {error && <div className={classes.error}>{error}</div>}
-    {isFetching && (
+      )}
+      {error && <div className={classes.error}>{error}</div>}
+      {isFetching && (
       <div className={classes.spinnerContainer}>
         <CircularProgress className={classes.spinner} />
       </div>
-    )}
-  </div>
-)
-
+      )}
+    </div>
+  )
+}
 export default HomeComponent
