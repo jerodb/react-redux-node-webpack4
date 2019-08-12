@@ -3,9 +3,9 @@ import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import styles from './styles'
 
-const HomeComponent = ({
+function HomeComponent({
   data, error, isFetching, onClick
-}) => {
+}) {
   const classes = styles()
 
   return (

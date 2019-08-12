@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from './styles'
 
-const AboutComponent = () => {
+function AboutComponent() {
   const classes = styles()
 
   return (
