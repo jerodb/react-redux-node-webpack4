@@ -36,7 +36,6 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
-    "redux-mock-store": "^1.5.3",
     "redux-thunk": "^2.3.0",
     "regenerator-runtime": "^0.13.3",
     "whatwg-fetch": "^3.0.0"
@@ -64,6 +63,7 @@
     "prettier-eslint": "^8.8.2",
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
+    "redux-mock-store": "^1.5.3",
     "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
