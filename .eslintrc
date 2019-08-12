@@ -6,7 +6,6 @@
   },
   "extends": "airbnb",
   "globals": {
-    "alert": true,
     "document": true,
     "fetch": true,
     "window": true
