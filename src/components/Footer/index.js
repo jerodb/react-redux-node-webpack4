@@ -1,3 +1,3 @@
-import Footer from './FooterComponent'
+import Footer from './Footer.component'
 
 export default Footer

@@ -15,4 +15,9 @@ describe('App Component', () => {
     const wrapper = shallow(<App />)
     expect(wrapper.find('CssBaseline')).toHaveLength(1)
   })
+
+  it('Should include Router', () => {
+    const wrapper = shallow(<App />)
+    expect(wrapper.find('Router')).toHaveLength(1)
+  })
 })

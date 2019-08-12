@@ -1,6 +1,6 @@
 import React from 'react'
 import { version } from '../../../package.json'
-import styles from './styles'
+import styles from './Footer.styles'
 
 const Footer = () => {
   const classes = styles()

@@ -1,6 +1,5 @@
 import React from 'react'
-
-import styles from './styles'
+import styles from './About.styles'
 
 const AboutComponent = () => {
   const classes = styles()

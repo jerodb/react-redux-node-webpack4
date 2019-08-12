@@ -1,3 +1,3 @@
-import About from './AboutComponent'
+import About from './About.component'
 
 export default About

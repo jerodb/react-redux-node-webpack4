@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 import routes from './routes'
 
 const Router = () => (
-  <div>
+  <>
     <Switch>
       {routes.map(({
         Comp, exact, key, layout = true, path
@@ -20,7 +20,7 @@ const Router = () => (
       ))}
       )
     </Switch>
-  </div>
+  </>
 )
 
 export default Router

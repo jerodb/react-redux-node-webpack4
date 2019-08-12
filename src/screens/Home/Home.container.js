@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import HomeComponent from './HomeComponent'
+import Home from './Home.component'
 import { getServerInfo, setServerInfo, showError } from '../../actions/serverInfoActions'
 import { server } from '../../services'
 
@@ -16,7 +16,7 @@ function HomeContainer({
   }
 
   return (
-    <HomeComponent
+    <Home
       data={data}
       error={error}
       isFetching={isFetching}
