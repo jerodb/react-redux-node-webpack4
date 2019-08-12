@@ -3,7 +3,7 @@ import Header from '../Header'
 import Footer from '../Footer'
 import styles from './styles'
 
-const LayoutComponent = ({ Comp }) => {
+function Layout({ Comp }) {
   const classes = styles()
 
   return (
@@ -17,4 +17,4 @@ const LayoutComponent = ({ Comp }) => {
   )
 }
 
-export default LayoutComponent
+export default Layout
