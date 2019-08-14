@@ -1,31 +1,38 @@
 import React from 'react'
-import { mount } from 'enzyme'
-import { ThemeProvider } from '@material-ui/styles'
-import { Provider } from 'react-redux'
-import configureStore from 'redux-mock-store'
-import thunkMiddleware from 'redux-thunk'
-import Home from './Home.container'
-import theme from '../../res/theme'
+import { shallow } from 'enzyme'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Button from '@material-ui/core/Button'
+import Home from './Home.component'
 
-const middlewares = [thunkMiddleware]
-const mockStore = configureStore(middlewares)
-const initialState = {
-  serverInfo: {
-    data: null,
-    error: '',
-    isFetching: false,
-  }
+const mockProps = {
+  data: null,
+  error: false,
+  isFetching: false,
+  onClick: () => null,
+  styles: {}
 }
-const store = mockStore(initialState)
 
-describe('Home Component', () => {
-  it('Should render without errors', () => {
-    mount(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <Home />
-        </ThemeProvider>
-      </Provider>
-    )
+describe('Home Component unit tests', () => {
+  let wrapper
+
+  beforeEach(() => {
+    wrapper = shallow(<Home {...mockProps} />)
+  })
+
+  it('Trigger event on button click', () => {
+    const mockCallBack = jest.fn()
+
+    wrapper.setProps({ onClick: mockCallBack })
+    wrapper.find(Button).dive('button').simulate('click')
+    expect(mockCallBack.mock.calls.length).toEqual(1)
+  })
+
+  it('Render loader when fetching', () => {
+    wrapper.setProps({ isFetching: true })
+    expect(wrapper.find(CircularProgress)).toHaveLength(1)
+  })
+
+  it('Hide loader when not fetching', () => {
+    expect(wrapper.find(CircularProgress)).toHaveLength(0)
   })
 })
