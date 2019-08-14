@@ -49,5 +49,6 @@ $ yarn dev
 - Test app:
 ```
 $ yarn test
+$ yarn test:watch   (to test on every file change)
 ```
   
