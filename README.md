@@ -52,6 +52,11 @@ $ yarn dev
 - Test app:
 ```
 $ yarn test
-$ yarn test:watch   (to test on every file change)
+```
+  
+- Test on every file change:
+```
+
+$ yarn test:watch
 ```
   
