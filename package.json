@@ -14,7 +14,7 @@
     "dev": "webpack-dev-server --config ./webpack.config.babel.js --hot",
     "pre-build": "if [ -d \"dist\" ]; then rm -R dist; fi && mkdir dist",
     "start": "node -r dotenv/config -r @babel/register ./server",
-    "test": "jest",
+    "test": "jest --verbose",
     "test:watch": "yarn test -- --watch"
   },
   "dependencies": {
@@ -71,7 +71,7 @@
   },
   "jest": {
     "setupFilesAfterEnv": [
-      "./src/setupTests.js"
+      "./test/setupTests.js"
     ]
   }
 }
