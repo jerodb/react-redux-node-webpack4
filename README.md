@@ -27,7 +27,7 @@ For example:
 ```
   
 &nbsp;
-## Install, build and run:
+## Install, build and run
 *(\*) Node environment and Webpack mode depends on **NODE_ENV** value set in **.env** file.*  
 
 - Install dependencies:  
@@ -47,7 +47,7 @@ $ yarn dev
 ```
   
 &nbsp;
-## Testing:
+## Testing
 
 - Test app:
 ```
