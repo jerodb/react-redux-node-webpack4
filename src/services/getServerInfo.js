@@ -1,19 +1,21 @@
+import handleCatch from './handleCatch'
+
 const { HOST } = process.env
 
 const handleErrors = response => {
   if (!response.ok) {
-    throw Error(response.statusText)
+    throw Error(JSON.stringify(response))
   }
   return response.json()
 }
 
-const getServerInfo = () => fetch(`${HOST}api/server/info`)
-  .then(handleErrors)
-  .then(res => res)
-  .catch(err => {
-    // eslint-disable-next-line no-console
-    console.log('Fetch Server Info Error: ', err)
-    return { error: 'Something went wrong. See the console for more information.' }
-  })
-
+const getServerInfo = async () => {
+  try {
+    const response = await fetch(`${HOST}api/server/info`)
+    const res = await handleErrors(response)
+    return res
+  } catch (err) {
+    return handleCatch(err)
+  }
+}
 export default getServerInfo
