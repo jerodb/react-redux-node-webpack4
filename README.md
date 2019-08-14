@@ -56,7 +56,6 @@ $ yarn test
   
 - Test on every file change:
 ```
-
 $ yarn test:watch
 ```
   
