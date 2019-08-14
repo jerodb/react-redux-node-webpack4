@@ -1,5 +1,5 @@
 import {
-  SERVER_INFO_CLEAR, SERVER_INFO_ERROR, SERVER_INFO_IS_FETCHING, SERVER_INFO_SET
+  SERVER_INFO_ERROR, SERVER_INFO_IS_FETCHING, SERVER_INFO_SET
 } from '../actions/_types'
 
 const initialState = {
@@ -10,10 +10,6 @@ const initialState = {
 
 export const serverInfo = (state = initialState, action) => {
   switch (action.type) {
-    case SERVER_INFO_CLEAR:
-      return {
-        ...initialState
-      }
     case SERVER_INFO_ERROR:
       return {
         data: null,
