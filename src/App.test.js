@@ -2,22 +2,18 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import App from './App'
 
-describe('App Component', () => {
+describe('App Component unit tests', () => {
   beforeEach(() => {
     window.scrollTo = () => {} // provide an empty implementation for window.scrollTo
   })
 
-  it('Should render without errors', () => {
-    shallow(<App />)
-  })
+  const wrapper = shallow(<App />)
 
-  it('Should include styles normalizations', () => {
-    const wrapper = shallow(<App />)
+  it('Include styles normalizations', () => {
     expect(wrapper.find('CssBaseline')).toHaveLength(1)
   })
 
-  it('Should include Router', () => {
-    const wrapper = shallow(<App />)
+  it('Include Router', () => {
     expect(wrapper.find('Router')).toHaveLength(1)
   })
 })
