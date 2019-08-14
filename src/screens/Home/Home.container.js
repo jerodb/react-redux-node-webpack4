@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Home from './Home.component'
+import styles from './Home.styles'
 import { getServerInfo, setServerInfo, showError } from '../../actions/serverInfoActions'
 import { getServerInfo as getInfo } from '../../services'
 
@@ -15,12 +16,15 @@ function HomeContainer({
     else onSetServerInfo(serverInfo)
   }
 
+  const classes = styles()
+
   return (
     <Home
       data={data}
       error={error}
       isFetching={isFetching}
       onClick={onClick}
+      styles={classes}
     />
   )
 }
