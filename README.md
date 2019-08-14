@@ -17,7 +17,7 @@
   PORT=
 ```
   
-If you omit the .env file the app will start with this default:
+For example:
   
 ```
   BASE_NAME=/
@@ -45,6 +45,9 @@ $ yarn start
 ```
 $ yarn dev
 ```
+  
+&nbsp;
+## Testing:
 
 - Test app:
 ```
