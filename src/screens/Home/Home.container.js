@@ -2,20 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Home from './Home.component'
 import styles from './Home.styles'
-import { getServerInfo, setServerInfo, showError } from '../../actions/serverInfoActions'
-import { getServerInfo as getInfo } from '../../services'
+import { getServerInfo } from '../../actions/serverInfoActions'
 
 function HomeContainer({
-  data, error, isFetching, onGetServerInfo, onSetServerInfo, onShowError
+  data, error, isFetching, onGetServerInfo
 }) {
-  const onClick = async () => {
-    onGetServerInfo()
-    const serverInfo = await getInfo()
-
-    if (serverInfo && serverInfo.error) onShowError(serverInfo.error)
-    else onSetServerInfo(serverInfo)
-  }
-
   const classes = styles()
 
   return (
@@ -23,7 +14,7 @@ function HomeContainer({
       data={data}
       error={error}
       isFetching={isFetching}
-      onClick={onClick}
+      onClick={onGetServerInfo}
       styles={classes}
     />
   )
@@ -40,9 +31,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onGetServerInfo: () => dispatch(getServerInfo()),
-  onSetServerInfo: data => dispatch(setServerInfo(data)),
-  onShowError: err => dispatch(showError(err)),
+  onGetServerInfo: data => dispatch(getServerInfo(data)),
 })
 
 export default connect(
