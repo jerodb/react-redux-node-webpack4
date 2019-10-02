@@ -14,7 +14,7 @@ const HeaderComponent = ({
   const classes = styles()
 
   return (
-    <AppBar position="static">
+    <AppBar position="relative">
       <Toolbar className={classes.container}>
         <Link
           className={classes.logoWrapper}
