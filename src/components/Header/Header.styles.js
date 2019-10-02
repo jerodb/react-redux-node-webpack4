@@ -3,7 +3,7 @@ import { logo } from '../../res/images'
 
 const styles = makeStyles(theme => ({
   container: {
-    ...theme.mainContainer,
+    ...theme.mainWrapper,
   },
   grow: {
     flexGrow: 1,
