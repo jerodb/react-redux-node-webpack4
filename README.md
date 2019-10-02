@@ -11,19 +11,31 @@
 - Create .env file with the following variables:
 
 ```
-  BASE_NAME=
-  HOST=
-  NODE_ENV=
   PORT=
+  BASE_PATH=
+  HOST=
+  GAMES_HOST=
+  MYSQL_DB=
+  MYSQL_USER=
+  MYSQL_PASS=
+  MYSQL_HOST=
+  MYSQL_PORT=
+  NODE_ENV=
 ```
   
 For example:
   
 ```
-  BASE_NAME=/
-  HOST=http://localhost:3000/
-  NODE_ENV=development
   PORT=3000
+  BASE_PATH=/
+  HOST=http://localhost:3000
+  GAMES_HOST=http://localhost:4000
+  MYSQL_DB=playnews
+  MYSQL_USER=root
+  MYSQL_PASS=
+  MYSQL_HOST=localhost
+  MYSQL_PORT=3306
+  NODE_ENV=development
 ```
   
 &nbsp;
