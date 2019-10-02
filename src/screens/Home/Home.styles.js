@@ -1,42 +1,43 @@
 import { makeStyles } from '@material-ui/styles'
 
 const styles = makeStyles(theme => ({
-  button: {
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    border: 0,
-    borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    color: 'white',
-    fontSize: '.9em',
-    height: 40,
-    marginBottom: 32,
-    padding: '0 20px',
-    [theme.breakpoints.up('sm')]: {
-      fontSize: '1em',
-      height: 48,
-      marginBottom: 48,
-      padding: '0 32px',
-    },
+  bgAlt: {
+    backgroundColor: '#ffffff'
   },
-  error: {
-    color: 'red',
-  },
-  home: {
-    alignItems: 'center',
-    display: 'flex',
+  container: {
+    ...theme.mainWrapper,
+    ...theme.vPadding,
     flexDirection: 'column',
-    marginTop: 48,
-    minHeight: 300,
     textAlign: 'center',
-    [theme.breakpoints.up('sm')]: {
-      marginTop: 64,
-    },
   },
-  info: {
-    listStyleType: 'none',
-    margin: '12 0 0',
-    padding: 0,
-    textAlign: 'left',
+  frame: {
+    backgroundColor: '#eaeaea'
+  },
+  hideIframe: {
+    height: 0,
+    visibility: 'hidden',
+  },
+  iframe: {
+    width: 1,
+    minWidth: '100%',
+  },
+  iframeInner: {
+    maxWidth: 800,
+  },
+  iframeWrapper: {
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  list: {
+    margin: 0,
+    listStylePosition: 'inside',
+    paddingLeft: 0,
+    paddingBottom: 32,
+    textAlign: 'left'
+  },
+  showIframe: {
+    height: 'auto',
+    visibility: 'visible',
   },
   spinner: {
     color: '#4498c8',
@@ -44,10 +45,11 @@ const styles = makeStyles(theme => ({
     height: 40,
   },
   spinnerContainer: {
-    display: 'flex',
-    height: 52,
-    padding: 6,
-    width: 52,
+    padding: 60,
+  },
+  welcome: {
+    paddingTop: 72,
+    paddingBottom: 100
   },
 }))
 

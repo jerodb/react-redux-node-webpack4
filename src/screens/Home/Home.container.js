@@ -1,40 +1,32 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import Home from './Home.component'
-import styles from './Home.styles'
-import { getServerInfo } from '../../actions/serverInfoActions'
+/* eslint-disable react/no-danger */
+import React, { useState } from 'react'
+import HomeComponent from './Home.component'
 
-function HomeContainer({
-  data, error, isFetching, onGetServerInfo
-}) {
-  const classes = styles()
+const Home = () => {
+  const [iframeIsLoading, toggleIframeIsLoading] = useState(true)
+
+  const iframeName = 'homeIframe'
+
+  const loadIframe = () => {
+    const element = document.getElementById(iframeName)
+
+    if (document.body.contains(element)) {
+      window.iFrameResize({
+        log: true,
+      }, `#${iframeName}`)
+
+      toggleIframeIsLoading(false)
+    }
+  }
 
   return (
-    <Home
-      data={data}
-      error={error}
-      isFetching={isFetching}
-      onClick={onGetServerInfo}
-      styles={classes}
+    <HomeComponent
+      iframeName={iframeName}
+      iframeSrc={`${process.env.GAMES_HOST}/sample`}
+      iframeIsLoading={iframeIsLoading}
+      onLoadIframe={loadIframe}
     />
   )
 }
 
-const mapStateToProps = state => {
-  const { data, error, isFetching } = state.serverInfo
-
-  return {
-    data,
-    error,
-    isFetching,
-  }
-}
-
-const mapDispatchToProps = dispatch => ({
-  onGetServerInfo: data => dispatch(getServerInfo(data)),
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HomeContainer)
+export default Home
