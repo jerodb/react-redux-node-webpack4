@@ -3,10 +3,25 @@ import createBreakpoints from '@material-ui/core/styles/createBreakpoints'
 
 const breakpoints = createBreakpoints({})
 
+const hPadding = {
+  paddingLeft: '16pt',
+  paddingRight: '16pt',
+  [breakpoints.up('sm')]: {
+    paddingLeft: '32pt',
+    paddingRight: '32pt',
+  },
+}
+
 // Create theme instance.
 const theme = createMuiTheme({
   '@global': {
+    a: {
+      outline: 0,
+      textDecoration: 'none',
+    },
     body: {
+      color: '#222222',
+      fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
       fontSize: 14,
       minWidth: 280,
       [breakpoints.up('sm')]: {
@@ -14,19 +29,26 @@ const theme = createMuiTheme({
       },
     }
   },
-  mainContainer: {
+  hPadding,
+  vPadding: {
+    paddingBottom: '16pt',
+    paddingTop: '16pt',
+    [breakpoints.up('sm')]: {
+      paddingBottom: '32pt',
+      paddingTop: '32pt',
+    },
+  },
+  mainInner: {
+    maxWidth: 1280,
+    margin: '0 auto',
+  },
+  mainWrapper: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     margin: '0 auto',
-    maxWidth: 1024,
-    paddingLeft: 16,
-    paddingRight: 16,
     width: '100%',
-    [breakpoints.up('sm')]: {
-      paddingLeft: 24,
-      paddingRight: 24,
-    },
+    ...hPadding,
   },
   overrides: {
     MuiList: {
