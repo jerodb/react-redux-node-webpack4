@@ -11,7 +11,7 @@ import App from './App'
 import theme from './res/theme'
 import configureStore from './store'
 
-const { BASE_PATH } = process.env
+const { BASE_NAME } = process.env
 
 // Grab the initial state from SSR generated global variable
 const preloadedState = window.INITIAL_STATE
@@ -30,7 +30,7 @@ const Main = () => {
 
   return (
     <Provider store={store}>
-      <BrowserRouter basename={BASE_PATH}>
+      <BrowserRouter basename={BASE_NAME}>
         <ThemeProvider theme={theme}>
           <App />
         </ThemeProvider>

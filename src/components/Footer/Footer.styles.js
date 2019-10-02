@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/styles'
 
 const styles = makeStyles(theme => ({
   container: {
-    ...theme.mainWrapper,
+    ...theme.mainContainer,
     alignItems: 'center',
     paddingTop: 16,
     paddingBottom: 16,

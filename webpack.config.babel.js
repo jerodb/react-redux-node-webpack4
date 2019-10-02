@@ -5,49 +5,47 @@ import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import {
-  BASE_PATH, GAMES_HOST, HOST, NODE_ENV, PORT, ROOT_DIR
+  BASE_NAME, HOST, NODE_ENV, PORT, ROOT_DIR
 } from './config'
 
 export default () => ({
-  // https://webpack.js.org/configuration/dev-server/
-  devServer: {
-    contentBase: buildPath,
-    hot: true,
-    port: PORT,
-  },
+  // https://webpack.js.org/configuration/mode/
+  mode,
   // https://webpack.js.org/configuration/devtool/
   devtool: isDev ? 'eval-source-map' : 'source-map',
   // https://webpack.js.org/configuration/entry-context/#entry
   entry: entryPoint,
-  // https://webpack.js.org/configuration/mode/
-  mode,
-  module: {
-    // https://webpack.js.org/configuration/module/#modulerules
-    rules
+  resolve: {
+    // https://webpack.js.org/configuration/resolve/#resolveextensions
+    extensions: ['.js', '.jsx', '.json']
   },
   // https://webpack.js.org/configuration/output/
   output: {
     filename: outputBundle,
     path: buildPath,
-    publicPath: `${BASE_PATH}`,
+    publicPath: `${BASE_NAME}`,
   },
   // https://webpack.js.org/configuration/plugins/
   plugins,
-  resolve: {
-    // https://webpack.js.org/configuration/resolve/#resolveextensions
-    extensions: ['.js', '.jsx', '.json']
+  module: {
+    // https://webpack.js.org/configuration/module/#modulerules
+    rules
   },
-  target: 'web',
+  // https://webpack.js.org/configuration/dev-server/
+  devServer: {
+    contentBase: buildPath,
+    port: PORT,
+  },
 })
 
+const buildPath = ROOT_DIR
 const sourcePath = path.join(__dirname, 'src')
 const assets = path.join(sourcePath, 'assets')
-const buildPath = ROOT_DIR
 const entryPoint = path.join(sourcePath, 'index.js')
 const outputBundle = path.join('js', 'bundle.js')
 const template = path.join(sourcePath, 'templates', 'index.pug')
 
-const mode = NODE_ENV || 'development'
+const mode = NODE_ENV
 const isDev = mode === 'development'
 
 const plugins = [
@@ -55,37 +53,21 @@ const plugins = [
   // Create global constants which are configured at compile time.
   new webpack.DefinePlugin({
     'process.env': {
-      BASE_PATH: JSON.stringify(BASE_PATH),
-      GAMES_HOST: JSON.stringify(GAMES_HOST),
+      BASE_NAME: JSON.stringify(BASE_NAME),
       NODE_ENV: JSON.stringify(NODE_ENV),
       HOST: JSON.stringify(HOST),
     }
   }),
 
+  // https://webpack.js.org/plugins/html-webpack-plugin/
+  // Generate an .html file that includes webpack bundles in the body.
   new HtmlWebpackPlugin({
     filename: 'index.html', // output template
     hash: !isDev, // automagically hashes bundles
+    host: HOST,
     template, // original template
-    templateParameters: {
-      base: BASE_PATH,
-      gamesHost: GAMES_HOST,
-      host: HOST
-    }
   }),
-  /*
-  isDev ? () => ({})
-    : new HtmlWebpackPlugin({
-      template: path.join(sourcePath, 'templates', 'layout.pug'),
-      filename: 'layout.pug',
-      hash: true,
-      templateParameters: {
-        base: BASE_PATH,
-        gamesHost: GAMES_HOST,
-        host: HOST
-      }
-      // minify (true if mode production and false if mode development)
-    }),
-*/
+
   // https://www.npmjs.com/package/html-webpack-pug-plugin
   new HtmlWebpackPugPlugin(),
 
@@ -95,10 +77,6 @@ const plugins = [
     {
       from: assets,
       to: buildPath
-    },
-    {
-      from: path.join(__dirname, 'node_modules', 'auth0-js', 'build', 'auth0.js'),
-      to: path.join(buildPath, 'js', 'auth0.js')
     },
   ])
 ]

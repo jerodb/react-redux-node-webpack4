@@ -38,7 +38,7 @@ describe('Integration tests on Home Component', () => {
 
     setImmediate(() => {
       expect(fetch).toHaveBeenCalledTimes(1)
-      expect(fetch).toHaveBeenCalledWith(`${process.env.HOST}/api/server/info`)
+      expect(fetch).toHaveBeenCalledWith(`${process.env.HOST}api/server/info`)
 
       expect(store.getActions()).toEqual(expectedActions)
     })

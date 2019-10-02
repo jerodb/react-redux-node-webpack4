@@ -11,7 +11,7 @@ const handleErrors = response => {
 
 const getServerInfo = async () => {
   try {
-    const response = await fetch(`${HOST}/api/server/info`)
+    const response = await fetch(`${HOST}api/server/info`)
     const res = await handleErrors(response)
     return res
   } catch (err) {
