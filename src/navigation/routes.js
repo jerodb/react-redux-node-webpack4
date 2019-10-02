@@ -1,4 +1,4 @@
-import About from '../screens/About'
+import CreateGame from '../screens/CreateGame'
 import Home from '../screens/Home'
 
 const routes = [
@@ -9,9 +9,9 @@ const routes = [
     exact: true,
   },
   {
-    path: '/about',
-    Comp: About,
-    key: 'about',
+    path: '/create-game',
+    Comp: CreateGame,
+    key: 'createGame',
     exact: true,
   },
 ]
