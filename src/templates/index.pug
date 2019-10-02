@@ -1,14 +1,10 @@
-doctype html
-html(lang='en')
-  head
-    include includes/metas-links
+extends layout
 
-    title React SPA
+block content
+  #app
+  
+  // App initial state is inserted here when SSR
+  script(id='ssr-state')
 
-    // App styles are inserted here when SSR
-    style(id='ssr-styles')
-  body
-    #app
-
-    // App initial state is inserted here when SSR
-    script(id='ssr-state')
+  script(src=`${gamesHost}/lib/iframeResizer.min.js` type='text/javascript')
+  script(src=`${host}/js/auth0.js` type='text/javascript')
